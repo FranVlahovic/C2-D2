@@ -1,3 +1,19 @@
+import { useState } from "react";
+import StartScreen from "./StartScreen.jsx";
+
+
 export default function App() {
-  return <h1>This is on load test</h1>;
+  const [currentScreen, setCurrentScreen] = useState('start'); 
+  
+  function handleStart(){
+    setCurrentScreen('disclaimer');
+  }
+
+
+  return (
+    <>
+      {currentScreen === 'start' && <StartScreen handleStart={handleStart} />}
+      {currentScreen === 'disclaimer' && <Disclaimer />}
+    </>
+  );
 }

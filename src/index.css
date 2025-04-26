@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+
+@font-face {
+  font-family: 'StarJedi';
+  src: url(./assets/fonts/Starjedi.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,11 +12,41 @@
 }
 
 :root {
---primary-color: --secondary-color: ;
+  --primary-text-color: #ffffff;
+  --secondary-color: ;
 }
 
 img {
-max-width: 100%;
-display: block;
-height: auto;
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+#root {
+  background-color: black;
+}
+.startscreen {
+  background-image: url(./assets/images/starter.jpg);
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.startscreen-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10em;
+}
+.startscreen-heading h1 {
+  font-size: 10rem;
+  font-family: 'StarJedi';
+  font-weight: 400;
+  color: var(--primary-text-color);
+}
+.startscreen-heading p {
+  font-size: 1.2rem;
+  font-family: 'Bruno Ace';
+  color: var(--primary-text-color);
 }

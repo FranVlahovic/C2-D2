@@ -18,7 +18,7 @@ module.exports = {
       "warn",
       {
         "code": 80,
-        "tabWidth": 2,
+        "tabWidth": 4,
         "comments": 80,
         "ignoreComments": false,
         "ignoreTrailingComments": true,
