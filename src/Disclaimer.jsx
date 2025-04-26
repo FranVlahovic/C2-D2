@@ -1,0 +1,28 @@
+import { useEffect } from "react";
+
+export default function DisclaimerScreen({ handleScreenSwitch }) {
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleScreenSwitch('faction');
+        }, 15000);
+
+        return () => {
+            clearInterval(interval);
+        };
+
+    }, [handleScreenSwitch]);
+    
+    return (
+        <div className="disclaimer-screen">
+            <div className="disclaimer-section">
+                <h2>Disclaimer</h2>
+                <p>
+                    This fan-made game is not affiliated with or endorsed by Lucasfilm or Disney. 
+                    All Star Wars-related trademarks and copyrights belong to Lucasfilm and Disney.
+                    This project is non-commercial and for entertainment purposes only.
+                </p>
+                <span className="loader"></span>
+            </div>
+        </div>
+    );
+}
