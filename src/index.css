@@ -1,173 +1,259 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
 
 @font-face {
-  font-family: 'StarJedi';
-  src: url(./assets/fonts/Starjedi.ttf);
+    font-family: 'StarJedi';
+    src: url(./assets/fonts/Starjedi.ttf);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  --primary-text-color: #ffffff;
-  --card-background: #0d1923;
-  --card-text-border: #b3b3b3;
+    --primary-text-color: #ffffff;
+    --card-background: #0d1923;
+    --card-text-border: #b3b3b3;
 }
 
 img {
-  max-width: 100%;
-  display: block;
-  height: auto;
+    max-width: 100%;
+    display: block;
+    height: auto;
 }
 
 #root {
-  background-color: black;
+    background-color: black;
 }
 
 /* ANIMATIONS */
 @keyframes blink-animation {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes animFw {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 /* START SCREEN */
 .startscreen {
-  background-image: url(./assets/images/starter.jpg);
-  width: 100%;
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-image: url(./assets/images/starter.jpg);
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .startscreen-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10em;
 }
 .startscreen-heading h1 {
-  font-size: 10rem;
-  font-family: 'StarJedi';
-  font-weight: 400;
-  color: var(--primary-text-color);
+    font-size: 10rem;
+    font-family: 'StarJedi';
+    font-weight: 400;
+    color: var(--primary-text-color);
 }
 .startscreen-heading p {
-  font-size: 1.2rem;
-  font-family: 'Bruno Ace';
-  color: var(--primary-text-color);
-  animation: blink-animation 3s infinite;
+    font-size: 1.2rem;
+    font-family: 'Bruno Ace';
+    color: var(--primary-text-color);
+    animation: blink-animation 3s infinite;
 }
 
 /* DISCLAIMER SCREEN */
 .disclaimer-screen {
-  background-image: url(./assets/images/disclaimer.jpg);
-  width: 100%;
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-image: url(./assets/images/disclaimer.jpg);
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .disclaimer-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10em;
-  max-width: 50em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10em;
+    max-width: 50em;
 }
 
 .disclaimer-section h2 {
-  font-family: 'StarJedi';
-  font-size: 2rem;
-  font-weight: 100;
-  letter-spacing: 0.05em;
-  color: var(--primary-text-color);
+    font-family: 'StarJedi';
+    font-size: 2rem;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    color: var(--primary-text-color);
 }
 .disclaimer-section p {
-  font-size: 1.2rem;
-  font-family: 'Bruno Ace';
-  text-align: center;
-  color: var(--primary-text-color);
+    font-size: 1.2rem;
+    font-family: 'Bruno Ace';
+    text-align: center;
+    color: var(--primary-text-color);
 }
 
 .loader {
-  width: 100%;
-  height: 0.7em;
-  margin-top: 1em;
-  border-radius: 1em;
-  display: inline-block;
-  position: relative;
-  background: rgba(255, 255, 255, 0.15);
-  overflow: hidden;
+    width: 100%;
+    height: 0.7em;
+    margin-top: 1em;
+    border-radius: 1em;
+    display: inline-block;
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
 }
 .loader::after {
-  content: '';
-  box-sizing: border-box;
-  width: 0;
-  height: 0.7em;
-  background: var(--primary-text-color);
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: animFw 15s ease-in-out;
+    content: '';
+    box-sizing: border-box;
+    width: 0;
+    height: 0.7em;
+    background: var(--primary-text-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: animFw 15s ease-in-out;
 }
 
 /* FACTION SCREEN */
 .faction-screen {
-  background-image: url(./assets/images/faction.jpg);
-  flex-direction: column;
-  width: 100%;
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-image: url(./assets/images/faction.jpg);
+    flex-direction: column;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .faction-select-container {
-  display: flex;
-  gap: 5em;
+    display: flex;
+    gap: 5em;
 }
 .faction-heading {
-  font-family: 'StarJedi';
-  font-size: 2rem;
-  font-weight: 100;
-  letter-spacing: 0.05em;
-  color: var(--primary-text-color);
-  margin-bottom: 2em;
+    font-family: 'StarJedi';
+    font-size: 2rem;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    color: var(--primary-text-color);
+    margin-bottom: 2em;
 }
 
 .cardback {
-  border-radius: 2em;
-  padding: 1em;
-  background-color: var(--card-background);
+    border-radius: 2em;
+    padding: 1em;
+    background-color: var(--card-background);
+    opacity: 0.97;
+    transition: transform 0.3s ease-in-out;
 }
 .cardback-border {
-  background-color: transparent;
-  border: 2px solid var(--card-text-border);
-  border-radius: 1em;
-  padding: 6em 3em;
+    background-color: transparent;
+    border: 2px solid var(--card-text-border);
+    border-radius: 1em;
+    padding: 6em 3em;
 }
 .cardback-border img {
-  max-width: 5em;
-  filter: brightness(0) saturate(100%) invert(100%) sepia(96%) saturate(15%)
-    hue-rotate(212deg) brightness(104%) contrast(104%);
+    max-width: 5em;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(96%) saturate(15%)
+        hue-rotate(212deg) brightness(104%) contrast(104%);
+}
+.cardback:hover {
+    transform: scale(1.05);
+    box-shadow: var(--primary-text-color) 0px 0px 10px 0px;
+}
+
+.loader-spinner {
+    color: #ffffff;
+    font-size: 60px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    transform: translateZ(0);
+    animation:
+        mltShdSpin 2s infinite ease,
+        round 2s infinite ease;
+}
+
+@keyframes mltShdSpin {
+    0% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            0 -0.83em 0 -0.42em,
+            0 -0.83em 0 -0.44em,
+            0 -0.83em 0 -0.46em,
+            0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            0 -0.83em 0 -0.42em,
+            0 -0.83em 0 -0.44em,
+            0 -0.83em 0 -0.46em,
+            0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            -0.087em -0.825em 0 -0.42em,
+            -0.173em -0.812em 0 -0.44em,
+            -0.256em -0.789em 0 -0.46em,
+            -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            -0.338em -0.758em 0 -0.42em,
+            -0.555em -0.617em 0 -0.44em,
+            -0.671em -0.488em 0 -0.46em,
+            -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            -0.377em -0.74em 0 -0.42em,
+            -0.645em -0.522em 0 -0.44em,
+            -0.775em -0.297em 0 -0.46em,
+            -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            0 -0.83em 0 -0.42em,
+            0 -0.83em 0 -0.44em,
+            0 -0.83em 0 -0.46em,
+            0 -0.83em 0 -0.477em;
+    }
+}
+
+@keyframes round {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

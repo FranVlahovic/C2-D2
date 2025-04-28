@@ -4,11 +4,12 @@ import resistance from './assets/images/resistance.svg';
 import Deck from './components/Deck';
 
 
-export default function FactionScreen({handleChosenDeck, handleScreenSwitch}) {
+export default function FactionScreen({handleChosenDeck, handleScreenSwitch, factionText, handleFactionText, handleLoading, isLoading}) {
+
     const factions = [
         {
             id:0,
-            name: 'Jedi Order',
+            name: 'Jedi order',
             image: jedi,
             imageAlt: 'Jedi Order Logo',
         },
@@ -30,12 +31,13 @@ export default function FactionScreen({handleChosenDeck, handleScreenSwitch}) {
 
     return (
         <div className="faction-screen">
-            <h2 className="faction-heading">Choose your Faction</h2>
+            <h2 className="faction-heading">{factionText}</h2>
             <div className="faction-select-container">
                 {factions.map((faction) => (
-                    <Deck key={faction.id} faction={faction} handleChosenDeck={handleChosenDeck} handleScreenSwitch={handleScreenSwitch} />  
+                    <Deck key={faction.id} faction={faction} handleLoading={handleLoading} isLoading={isLoading} handleChosenDeck={handleChosenDeck} handleScreenSwitch={handleScreenSwitch} handleFactionText={handleFactionText} />  
                 ))}
             </div>
+            {isLoading && <span className='loader-spinner'></span>}
         </div>
     );
 }

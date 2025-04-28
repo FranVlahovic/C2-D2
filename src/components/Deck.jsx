@@ -1,11 +1,15 @@
-export default function Deck({faction, handleChosenDeck, handleScreenSwitch}){
+export default function Deck({handleLoading, faction, handleChosenDeck, handleScreenSwitch, handleFactionText, isLoading}){
     function handleClick(){
         handleChosenDeck(faction)
-        handleScreenSwitch('game')
+        handleLoading(true);
+        setTimeout(() => {
+            handleLoading(false);
+            handleScreenSwitch('game')
+        }, 5000);
     }
 
     return (
-        <div className="cardback" onClick={handleClick}>
+        <div className="cardback" onClick={handleClick} onMouseEnter={()=> !isLoading && handleFactionText(faction.name)} onMouseLeave={()=>!isLoading && handleFactionText('Choose your Faction')}>
             <div className="cardback-border">
                 <img src={faction.image} alt={faction.imageAlt} />
             </div>
