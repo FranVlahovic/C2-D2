@@ -13,7 +13,7 @@
 
 :root {
     --primary-text-color: #ffffff;
-    --card-background: #0d1923;
+    --card-background: rgb(13, 25, 35);
     --card-text-border: #b3b3b3;
 }
 
@@ -46,6 +46,68 @@ img {
     }
     100% {
         width: 100%;
+    }
+}
+
+@keyframes mltShdSpin {
+    0% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            0 -0.83em 0 -0.42em,
+            0 -0.83em 0 -0.44em,
+            0 -0.83em 0 -0.46em,
+            0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            0 -0.83em 0 -0.42em,
+            0 -0.83em 0 -0.44em,
+            0 -0.83em 0 -0.46em,
+            0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            -0.087em -0.825em 0 -0.42em,
+            -0.173em -0.812em 0 -0.44em,
+            -0.256em -0.789em 0 -0.46em,
+            -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            -0.338em -0.758em 0 -0.42em,
+            -0.555em -0.617em 0 -0.44em,
+            -0.671em -0.488em 0 -0.46em,
+            -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            -0.377em -0.74em 0 -0.42em,
+            -0.645em -0.522em 0 -0.44em,
+            -0.775em -0.297em 0 -0.46em,
+            -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+        box-shadow:
+            0 -0.83em 0 -0.4em,
+            0 -0.83em 0 -0.42em,
+            0 -0.83em 0 -0.44em,
+            0 -0.83em 0 -0.46em,
+            0 -0.83em 0 -0.477em;
+    }
+}
+
+@keyframes round {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -196,64 +258,64 @@ img {
         round 2s infinite ease;
 }
 
-@keyframes mltShdSpin {
-    0% {
-        box-shadow:
-            0 -0.83em 0 -0.4em,
-            0 -0.83em 0 -0.42em,
-            0 -0.83em 0 -0.44em,
-            0 -0.83em 0 -0.46em,
-            0 -0.83em 0 -0.477em;
-    }
-    5%,
-    95% {
-        box-shadow:
-            0 -0.83em 0 -0.4em,
-            0 -0.83em 0 -0.42em,
-            0 -0.83em 0 -0.44em,
-            0 -0.83em 0 -0.46em,
-            0 -0.83em 0 -0.477em;
-    }
-    10%,
-    59% {
-        box-shadow:
-            0 -0.83em 0 -0.4em,
-            -0.087em -0.825em 0 -0.42em,
-            -0.173em -0.812em 0 -0.44em,
-            -0.256em -0.789em 0 -0.46em,
-            -0.297em -0.775em 0 -0.477em;
-    }
-    20% {
-        box-shadow:
-            0 -0.83em 0 -0.4em,
-            -0.338em -0.758em 0 -0.42em,
-            -0.555em -0.617em 0 -0.44em,
-            -0.671em -0.488em 0 -0.46em,
-            -0.749em -0.34em 0 -0.477em;
-    }
-    38% {
-        box-shadow:
-            0 -0.83em 0 -0.4em,
-            -0.377em -0.74em 0 -0.42em,
-            -0.645em -0.522em 0 -0.44em,
-            -0.775em -0.297em 0 -0.46em,
-            -0.82em -0.09em 0 -0.477em;
-    }
-    100% {
-        box-shadow:
-            0 -0.83em 0 -0.4em,
-            0 -0.83em 0 -0.42em,
-            0 -0.83em 0 -0.44em,
-            0 -0.83em 0 -0.46em,
-            0 -0.83em 0 -0.477em;
-    }
+/* INTRODUCTION SCREEN */
+.introduction-screen {
+    background-image: url(./assets/images/nameblur.jpg);
+    flex-direction: column;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+.introduction-screen::before {
+    content: '';
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: -1;
+}
+.introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12em;
+}
+form input {
+    font-size: 1.2rem;
+    font-family: 'Bruno Ace';
+    text-align: center;
+    padding: 0.3em;
+    border: none;
+    border-radius: 0.4em;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-top: 2em;
+    color: var(--card-background);
+}
+form input:focus {
+    outline: none;
 }
 
-@keyframes round {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.introduction-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.introduction-heading h2 {
+    font-family: 'StarJedi';
+    font-size: 2rem;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    color: var(--primary-text-color);
+}
+.introduction-heading p {
+    font-size: 1.2rem;
+    font-family: 'Bruno Ace';
+    text-align: center;
+    color: var(--primary-text-color);
 }

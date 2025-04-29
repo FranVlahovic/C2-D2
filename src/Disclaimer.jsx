@@ -3,7 +3,7 @@ import { useEffect } from "react";
 export default function DisclaimerScreen({ handleScreenSwitch }) {
     useEffect(() => {
         const interval = setInterval(() => {
-            handleScreenSwitch('faction');
+            handleScreenSwitch('introduction');
         }, 15000);
 
         return () => {

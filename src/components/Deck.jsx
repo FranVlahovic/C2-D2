@@ -5,7 +5,7 @@ export default function Deck({handleLoading, faction, handleChosenDeck, handleSc
         setTimeout(() => {
             handleLoading(false);
             handleScreenSwitch('game')
-        }, 5000);
+        }, 4000);
     }
 
     return (

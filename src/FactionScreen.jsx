@@ -28,7 +28,6 @@ export default function FactionScreen({handleChosenDeck, handleScreenSwitch, fac
         },
     ]
 
-
     return (
         <div className="faction-screen">
             <h2 className="faction-heading">{factionText}</h2>
