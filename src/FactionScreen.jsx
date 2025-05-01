@@ -1,39 +1,31 @@
-import empire from './assets/images/empire.svg';
-import jedi from './assets/images/jedi.svg';
-import resistance from './assets/images/resistance.svg';
 import Deck from './components/Deck';
-
+import { factions } from './data/factions';
 
 export default function FactionScreen({handleChosenDeck, handleScreenSwitch, factionText, handleFactionText, handleLoading, isLoading}) {
 
-    const factions = [
-        {
-            id:0,
-            name: 'Jedi order',
-            image: jedi,
-            imageAlt: 'Jedi Order Logo',
-        },
-        {
-            id:1,
-            name: 'Galactic Empire',
-            image: empire,
-            imageAlt: 'Galactic Empire Logo',
-    
-        },
-        {
-            id:2,
-            name: 'Resistance',
-            image: resistance,
-            imageAlt: 'Resistance Logo',
-        },
-    ]
+    function handleClick(faction){
+        handleChosenDeck(faction)
+        handleLoading(true);
+        setTimeout(() => {
+            handleLoading(false);
+            handleScreenSwitch('game')
+        }, 3000);
+    }
+
+    function handleMouseEnter(factionName){
+        !isLoading && handleFactionText(factionName);
+    }
+
+    function handleMouseLeave(){
+        !isLoading && handleFactionText('Choose your Faction'); 
+    }
 
     return (
         <div className="faction-screen">
             <h2 className="faction-heading">{factionText}</h2>
             <div className="faction-select-container">
                 {factions.map((faction) => (
-                    <Deck key={faction.id} faction={faction} handleLoading={handleLoading} isLoading={isLoading} handleChosenDeck={handleChosenDeck} handleScreenSwitch={handleScreenSwitch} handleFactionText={handleFactionText} />  
+                    <Deck key={faction.id} data={faction} onClick={()=>handleClick(faction)} onMouseEnter={()=>handleMouseEnter(faction.name)} onMouseLeave={handleMouseLeave} />  
                 ))}
             </div>
             {isLoading && <span className='loader-spinner'></span>}
