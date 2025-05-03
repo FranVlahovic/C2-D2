@@ -13,8 +13,10 @@
 
 :root {
     --primary-text-color: #ffffff;
-    --card-background: rgb(8, 8, 8);
+    --card-background: rgba(8, 8, 8, 0.92);
     --card-text-border: #b3b3b3;
+    --factions: brightness(0) saturate(100%) invert(100%) sepia(96%)
+        saturate(15%) hue-rotate(212deg) brightness(104%) contrast(104%);
 }
 
 img {
@@ -222,7 +224,6 @@ img {
     border-radius: 2em;
     padding: 1em;
     background-color: var(--card-background);
-    opacity: 0.9;
     transition: transform 0.3s ease-in-out;
 }
 .cardback-border {
@@ -233,8 +234,7 @@ img {
 }
 .cardback-border img {
     max-width: 5em;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(96%) saturate(15%)
-        hue-rotate(212deg) brightness(104%) contrast(104%);
+    filter: var(--factions);
 }
 .cardback:hover {
     transform: scale(1.05);
@@ -296,7 +296,7 @@ form input {
     border-radius: 0.4em;
     background-color: rgba(255, 255, 255, 0.2);
     margin-top: 2em;
-    color: var(--card-background);
+    color: rgb(71, 70, 70);
 }
 form input:focus {
     outline: none;
@@ -350,50 +350,101 @@ form input:focus {
     border: 1px solid red;
 }
 .game-header .profile-banner {
-    background-color: var(--card-background);
-    border: 2px solid var(--card-text-border);
     border-top: none;
     border-left: none;
-    border-radius: 0 0 0.5em 0;
-    display: flex;
-    align-items: center;
-    padding: 0.3em;
-    font-size: 0.9rem;
-    color: var(--primary-text-color);
+    border-radius: 0 0 1em 0;
 }
-.game-header button {
-    font-size: 0.9em;
-    background-color: var(--card-background);
-    color: var(--primary-text-color);
-    border: 2px solid var(--card-text-border);
-    border-radius: 0 0 0 0.5rem;
-    border-top: none;
-    border-right: none;
-    padding: 0.3em;
+.settings-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.8em;
+    align-self: center;
+    margin-right: 0.5em;
     cursor: pointer;
+}
+.settings-btn img {
+    width: 2em;
+    filter: var(--factions);
+}
+
+.scoreboard-best,
+.scoreboard-score {
+    display: flex;
+    background-color: var(--card-background);
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+    width: 8em;
+    padding: 0.3em;
+    border: 2px solid var(--card-text-border);
+    border-radius: 0.8em;
+    height: fit-content;
+}
+.scoreboard-best {
+    position: absolute;
+    top: 0;
+    border-top: none;
+    border-radius: 0 0 0.8em 0.8em;
+}
+.scoreboard-score {
+    align-self: center;
+    position: absolute;
+    bottom: 0;
+    border-bottom: none;
+    border-radius: 0.8em 0.8em 0 0;
+}
+
+.scoreboard-best h2,
+.scoreboard-score h2,
+.scoreboard-best span,
+.scoreboard-score span {
+    color: var(--primary-text-color);
+    font-family: 'Bruno Ace';
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
 .game-main {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 3em;
     gap: 4em;
-    padding: 4em;
 }
 .game-main .cardback {
     pointer-events: none;
+    scale: 0.8;
 }
 
-.computer-side {
+.computer-side,
+.player-side {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
     border: 1px solid red;
 }
+
 .game-controls {
+    display: flex;
+    gap: 4em;
     align-self: center;
     border: 1px solid red;
 }
-.player-side {
-    display: flex;
-    border: 1px solid red;
+.lower-btn,
+.higher-btn {
+    padding: 0.3em;
+    background-color: var(--card-background);
+    border: 2px solid var(--card-text-border);
+    border-radius: 0.8em;
+    cursor: pointer;
+}
+.lower-btn img,
+.higher-btn img {
+    width: 3em;
+    filter: var(--factions);
+}
+.higher-btn img {
+    rotate: 180deg;
 }
 
 .game-footer {
@@ -402,13 +453,28 @@ form input:focus {
 }
 
 .game-footer .profile-banner {
-    background-color: var(--card-background);
-    border: 2px solid var(--card-text-border);
     border-bottom: none;
     border-left: none;
-    border-radius: 0 0.5em 0 0;
+    border-radius: 0 1em 0 0;
+}
+.profile-banner {
+    min-width: 10em;
+    align-items: center;
+    gap: 0.5em;
+    justify-content: space-between;
     display: flex;
-    padding: 0.3em;
-    font-size: 0.9rem;
+    align-items: center;
+    padding: 0.5em;
+    font-size: 0.8rem;
     color: var(--primary-text-color);
+    background-color: var(--card-background);
+    border: 2px solid var(--card-text-border);
+}
+.profile-banner img {
+    max-width: 1.6em;
+    filter: var(--factions);
+}
+.profile-banner h3 {
+    text-align: center;
+    width: 100%;
 }

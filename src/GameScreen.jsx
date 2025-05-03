@@ -1,19 +1,22 @@
 import Deck from "./components/Deck";
+import Cog from "./assets/icons/cog.svg";
+import Arrow from "./assets/icons/arrow-down.svg";
 
-export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard}){
+export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName}){
     return (
         <div className="game-screen">
             <div className="game-header">
                 <div className="profile-banner">
-                    <h3>Player Name</h3>
-                    <p>image</p>
+                    <h3>Computer</h3>
+                    <img src={computerDeck.image} alt={computerDeck.imageAlt} />
                 </div>
-                <div className="scoreboard-best">
-                    <h2>test</h2>
-                </div>
-                <button>COG</button>
+                <button className="settings-btn"><img src={Cog} alt="Settings Cog" /></button>
             </div>
             <div className="game-main">
+                <div className="scoreboard-best">
+                    <h2>Best Score</h2>
+                    <span>4</span>
+                </div>
                 <div className="computer-side">
                     <Deck data={computerDeck} />
                     <div className="computer-card">
@@ -22,8 +25,8 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
                     </div>
                 </div>
                 <div className="game-controls">
-                    <button>UP</button>
-                    <button>UP</button>
+                    <button className="lower-btn"><img src={Arrow} alt="Arrow down" /></button>
+                    <button className="higher-btn"><img src={Arrow} alt="Arrow up" /></button>
                 </div>
                 <div className="player-side">
                     <Deck data={playerDeck} />
@@ -33,13 +36,14 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
                     </div>
                 </div>
             </div>
+            <div className="scoreboard-score">
+                <span>4</span>
+                <h2>Score</h2>
+            </div>
             <div className="game-footer">
                 <div className="profile-banner">
-                    <h3>Player Name</h3>
-                    <p>image</p>
-                </div>
-                <div className="scoreboard-score">
-                    <h2>test</h2>
+                    <h3>{playerName}</h3>
+                    <img src={playerDeck.image} alt={playerDeck.imageAlt} />
                 </div>
             </div>               
         </div>
