@@ -1,11 +1,13 @@
 export default function Introduction({setPlayerName, playerName, handleLoading, isLoading, setCurrentScreen}){
     function handleSubmit(e){
         e.preventDefault();
-        handleLoading(true);
-        setTimeout(() => {
-            handleLoading(false);
-            setCurrentScreen('faction');
-        }, 4000)
+        if(playerName.length >= 3 && playerName.length <= 12){
+            handleLoading(true);
+            setTimeout(() => {
+                handleLoading(false);
+                setCurrentScreen('faction');
+            }, 4000)
+        }
     }
 
     return (
@@ -17,6 +19,7 @@ export default function Introduction({setPlayerName, playerName, handleLoading, 
                 </div>
                 <form onSubmit={handleSubmit}>
                     <input id="playerName" type="text" value={playerName} autoFocus autoComplete="off" onChange={(e)=> setPlayerName(e.target.value)} required />
+                    {playerName.length < 3 || playerName.length > 12 ? <span className="invalid-input">✗</span> : <span className="valid-input">✔</span> }
                 </form>
             
             </div>

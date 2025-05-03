@@ -1,50 +1,35 @@
 import Deck from "./components/Deck";
-import Cog from "./assets/icons/cog.svg";
-import Arrow from "./assets/icons/arrow-down.svg";
+import ProfileBanner from "./components/ProfileBanner";
 
-export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName}){
+import Cog from "./assets/icons/cog.svg";
+
+import Scoreboard from "./components/Scoreboard";
+import GameControls from "./components/GameControls";
+import CardComponent from "./components/CardComponent";
+
+export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess}){
+    
     return (
         <div className="game-screen">
             <div className="game-header">
-                <div className="profile-banner">
-                    <h3>Computer</h3>
-                    <img src={computerDeck.image} alt={computerDeck.imageAlt} />
-                </div>
+                <ProfileBanner name='Computer' deck={computerDeck} />
                 <button className="settings-btn"><img src={Cog} alt="Settings Cog" /></button>
             </div>
             <div className="game-main">
-                <div className="scoreboard-best">
-                    <h2>Best Score</h2>
-                    <span>4</span>
-                </div>
+                <Scoreboard className={'scoreboard-best'} text='Best Score' value={bestScore} isScore={false} />
                 <div className="computer-side">
                     <Deck data={computerDeck} />
-                    <div className="computer-card">
-                        <h2>{computerCard.name}</h2>
-                        <p>{computerCard.value}</p>
-                    </div>
+                    <CardComponent id={computerCard.id} first={computerCard.first} last={computerCard.last} image={computerCard.image} imageAlt={computerCard.imageAlt} factionImage={computerCard.factionImage} factionImageAlt={computerCard.factionImageAlt} power={computerCard.power} />
                 </div>
-                <div className="game-controls">
-                    <button className="lower-btn"><img src={Arrow} alt="Arrow down" /></button>
-                    <button className="higher-btn"><img src={Arrow} alt="Arrow up" /></button>
-                </div>
+                <GameControls handleClick={handleGuess} />
                 <div className="player-side">
                     <Deck data={playerDeck} />
-                    <div className="player-card">
-                        <h2>{playerCard.name}</h2>
-                        <p>{playerCard.value}</p>
-                    </div>
+                    <CardComponent id={playerCard.id} first={playerCard.first} last={playerCard.last} image={playerCard.image} imageAlt={playerCard.imageAlt} factionImage={playerCard.factionImage} factionImageAlt={playerCard.factionImageAlt} power={playerCard.power} />
                 </div>
             </div>
-            <div className="scoreboard-score">
-                <span>4</span>
-                <h2>Score</h2>
-            </div>
+            <Scoreboard className='scoreboard-score' text='Score' value={score} isScore={true} />
             <div className="game-footer">
-                <div className="profile-banner">
-                    <h3>{playerName}</h3>
-                    <img src={playerDeck.image} alt={playerDeck.imageAlt} />
-                </div>
+                <ProfileBanner name={playerName} deck={playerDeck} />
             </div>               
         </div>
     )
