@@ -1,6 +1,6 @@
-export default function CardComponent({ id, first,last, image, imageAlt, factionImage, factionImageAlt, power }){
+export default function CardComponent({ id, first,last, image, imageAlt, factionImage, factionImageAlt, power, cardShown }){
     return(
-        <div className="card-container" id={id}>
+        <div className={!cardShown ? 'card-container flip-in' : 'card-container'} id={id}>
             <div className="card-image-pwr">
                 <img src={image} alt={imageAlt} />
                 <span className="card-pwr">{power}</span>

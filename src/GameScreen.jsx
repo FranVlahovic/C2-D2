@@ -7,7 +7,7 @@ import Scoreboard from "./components/Scoreboard";
 import GameControls from "./components/GameControls";
 import CardComponent from "./components/CardComponent";
 
-export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess}){
+export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown}){
     
     return (
         <div className="game-screen">
@@ -19,7 +19,15 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
                 <Scoreboard className={'scoreboard-best'} text='Best Score' value={bestScore} isScore={false} />
                 <div className="computer-side">
                     <Deck data={computerDeck} />
-                    <CardComponent id={computerCard.id} first={computerCard.first} last={computerCard.last} image={computerCard.image} imageAlt={computerCard.imageAlt} factionImage={computerCard.factionImage} factionImageAlt={computerCard.factionImageAlt} power={computerCard.power} />
+                    
+                    {cardShown ?
+                        <CardComponent id={computerCard.id} first={computerCard.first} last={computerCard.last} image={computerCard.image} imageAlt={computerCard.imageAlt} factionImage={computerCard.factionImage} factionImageAlt={computerCard.factionImageAlt} power={computerCard.power} /> :
+                        <div className="hidden-card">
+                            <div className="cardback-border">
+                                <img src={computerDeck.image} alt={computerDeck.imageAlt} />
+                            </div>
+                        </div>
+                    }
                 </div>
                 <GameControls handleClick={handleGuess} />
                 <div className="player-side">

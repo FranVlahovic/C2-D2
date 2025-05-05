@@ -25,8 +25,11 @@ export default function App() {
     const [factionText, setFactionText] = useState('Choose your Faction');
 
     const [score, setScore] = useState(0);
-    const [bestScore, setBestScore] = useState(0);
-
+    const [bestScore, setBestScore] = useState(() => {
+        const stored = localStorage.getItem('bestScore');
+        return stored ? parseInt(stored) : 0;
+    });
+    const [cardShown, setCardShown] = useState(false);
 
     function handleScreenSwitch(screen) {
         setCurrentScreen(screen);
@@ -49,23 +52,36 @@ export default function App() {
     }
 
     function handleGuess(guess){
-        console.log('Work', guess);
+        setCardShown(true);
     
         const correctGuess = 
-            (guess === 'higher' && playerCard.power > computerCard.power) || 
-            (guess === 'lower' && playerCard.power < computerCard.power) 
+        (guess === 'higher' && playerCard.power > computerCard.power) || 
+        (guess === 'lower' && playerCard.power < computerCard.power) 
         
         if(correctGuess){
-            setScore(prev => prev + 1);
-            setBestScore(prev => prev > score && prev + 1);
-            setComputerCard(randomItem(fullCards));
-            setPlayerCard(randomItem(fullCards));
+            const newScore = score + 1;
+            setScore(newScore);
+
+            if(newScore > bestScore){
+                setBestScore(newScore);
+            }
+
+            setTimeout(() => {
+                setComputerCard(randomItem(fullCards));
+                setPlayerCard(randomItem(fullCards));
+                setCardShown(false);
+            }, 1500);
+
         } else {
-            setScore(0);
+            setTimeout(() => {
+                setScore(0);
+                setCardShown(false);
+            }, 1500)
             // setCurrentScreen('game-over');
         }
     }
 
+    // FETCH CARD IMAGES
     useEffect(() => {
         let isMounted = true;
 
@@ -91,7 +107,7 @@ export default function App() {
         }
     }, []);
 
-
+    // RANDOMIZE CARDS & ENEMY DECK ON GAME PAGE LOAD
     useEffect(() => {
         if(currentScreen === 'game' && fullCards.length > 0) {
             setComputerDeck(randomItem(factions));
@@ -100,11 +116,17 @@ export default function App() {
         }
     }, [currentScreen, fullCards]);
 
+    // AVOIDING DUPLICATES
     useEffect(() => {
         if (playerCard && computerCard && playerCard.name === computerCard.name){
             setPlayerCard(randomItem(fullCards))
         }
     }, [playerCard, computerCard, fullCards])
+
+    // GET SCORE FROM LOCAL STORAGE
+    useEffect(() => {
+        localStorage.setItem('bestScore', bestScore);
+    }, [bestScore]);
 
 
     return (
@@ -113,7 +135,7 @@ export default function App() {
             {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} factionText={factionText} handleFactionText={handleFactionText} handleLoading={handleLoading} isLoading={isLoading}/>}
-            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} />}
+            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} />}
         </>
     );
 }
