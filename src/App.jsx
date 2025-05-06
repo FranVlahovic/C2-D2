@@ -31,6 +31,8 @@ export default function App() {
     });
     const [cardShown, setCardShown] = useState(false);
 
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
+
     function handleScreenSwitch(screen) {
         setCurrentScreen(screen);
     }
@@ -79,6 +81,10 @@ export default function App() {
             }, 1500)
             // setCurrentScreen('game-over');
         }
+    }
+
+    function toggleMenu(){
+        setIsMenuVisible(prev => !prev);
     }
 
     // FETCH CARD IMAGES
@@ -135,7 +141,7 @@ export default function App() {
             {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} factionText={factionText} handleFactionText={handleFactionText} handleLoading={handleLoading} isLoading={isLoading}/>}
-            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} />}
+            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />}
         </>
     );
 }

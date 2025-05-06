@@ -7,13 +7,15 @@ import Scoreboard from "./components/Scoreboard";
 import GameControls from "./components/GameControls";
 import CardComponent from "./components/CardComponent";
 
-export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown}){
+import GameMenu from "./components/GameMenu/GameMenu";
+
+export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown, isMenuVisible, toggleMenu}){
     
     return (
         <div className="game-screen">
             <div className="game-header">
                 <ProfileBanner name='Computer' deck={computerDeck} />
-                <button className="settings-btn"><img src={Cog} alt="Settings Cog" /></button>
+                <button className="settings-btn" onClick={toggleMenu}><img src={Cog} alt="Settings Cog" /></button>
             </div>
             <div className="game-main">
                 <Scoreboard className={'scoreboard-best'} text='Best Score' value={bestScore} isScore={false} />
@@ -38,7 +40,8 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
             <Scoreboard className='scoreboard-score' text='Score' value={score} isScore={true} />
             <div className="game-footer">
                 <ProfileBanner name={playerName} deck={playerDeck} />
-            </div>               
+            </div>
+            {isMenuVisible && <GameMenu />}
         </div>
     )
 }
