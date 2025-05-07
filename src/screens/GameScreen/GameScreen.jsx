@@ -1,13 +1,13 @@
-import Deck from "./components/Deck";
-import ProfileBanner from "./components/ProfileBanner";
+import Deck from "./Deck";
+import ProfileBanner from "./ProfileBanner";
 
-import Cog from "./assets/icons/cog.svg";
+import Cog from "../../assets/icons/cog.svg";
 
-import Scoreboard from "./components/Scoreboard";
-import GameControls from "./components/GameControls";
-import CardComponent from "./components/CardComponent";
+import Scoreboard from "./Scoreboard";
+import GameControls from "./GameControls";
+import CardComponent from "./CardComponent";
 
-import GameMenu from "./components/GameMenu/GameMenu";
+import GameMenu from "./GameMenu/GameMenu";
 
 export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown, isMenuVisible, toggleMenu}){
     

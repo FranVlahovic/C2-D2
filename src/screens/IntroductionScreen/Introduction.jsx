@@ -18,7 +18,7 @@ export default function Introduction({setPlayerName, playerName, handleLoading, 
                     <p>You there! State your indentification citizen.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <input id="playerName" type="text" value={playerName} autoFocus autoComplete="off" onChange={(e)=> setPlayerName(e.target.value)} required />
+                    <input id="playerName" type="text" value={playerName} aria-label="Enter Name" autoFocus autoComplete="off" onChange={(e)=> setPlayerName(e.target.value)} required disabled={isLoading} />
                     {playerName.length < 3 || playerName.length > 12 ? <span className="invalid-input">✗</span> : <span className="valid-input">✔</span> }
                 </form>
             

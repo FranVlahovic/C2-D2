@@ -1,5 +1,5 @@
-import Deck from './components/Deck';
-import { factions } from './data/factions';
+import Deck from '../GameScreen/Deck';
+import { factions } from '../../data/factions';
 
 export default function FactionScreen({handleChosenDeck, handleScreenSwitch, factionText, handleFactionText, handleLoading, isLoading}) {
 

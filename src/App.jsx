@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { factions } from './data/factions.js';
 import { cards } from './data/cardData.js';
 
-import StartScreen from './StartScreen.jsx';
-import DisclaimerScreen from './Disclaimer.jsx';
-import FactionScreen from './FactionScreen.jsx';
-import IntroductionScreen from './Introduction.jsx';
-import GameScreen from './GameScreen.jsx';
+import StartScreen from './screens/StartScreen/StartScreen.jsx';
+import DisclaimerScreen from './screens/DisclaimerScreen/Disclaimer.jsx';
+import FactionScreen from './screens/FactionScreen/FactionScreen.jsx';
+import IntroductionScreen from './screens/IntroductionScreen/Introduction.jsx';
+import GameScreen from './screens/GameScreen/GameScreen.jsx';
 
 export default function App() {
     const [currentScreen, setCurrentScreen] = useState('start');

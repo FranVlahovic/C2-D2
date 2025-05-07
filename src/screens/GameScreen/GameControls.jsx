@@ -1,4 +1,4 @@
-import Arrow from '../assets/icons/arrow-down.svg';
+import Arrow from '../../assets/icons/arrow-down.svg';
 
 export default function GameControls({ handleClick }){
     return (
