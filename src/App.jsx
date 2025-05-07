@@ -12,7 +12,7 @@ import GameScreen from './screens/GameScreen/GameScreen.jsx';
 export default function App() {
     const [currentScreen, setCurrentScreen] = useState('start');
     const [isLoading, setIsLoading] = useState(false);
-    
+
     const [playerName, setPlayerName] = useState('');
     const [nameError, setNameError] = useState('');
     
@@ -21,8 +21,6 @@ export default function App() {
     const [computerDeck, setComputerDeck] = useState();
     const [playerCard, setPlayerCard] = useState();
     const [computerCard, setComputerCard] = useState();
-    
-    const [factionText, setFactionText] = useState('Choose your Faction');
 
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(() => {
@@ -39,10 +37,6 @@ export default function App() {
 
     function handleChosenDeck(deck){
         setPlayerDeck(deck)
-    }
-
-    function handleFactionText(text){
-        setFactionText(text)
     }
 
     function handleLoading(value){
@@ -138,9 +132,9 @@ export default function App() {
     return (
         <>
             {currentScreen === 'start' && <StartScreen handleScreenSwitch={handleScreenSwitch} />}
-            {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} />}
+            {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} bestScore={bestScore} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
-            {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} factionText={factionText} handleFactionText={handleFactionText} handleLoading={handleLoading} isLoading={isLoading}/>}
+            {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} handleLoading={handleLoading} isLoading={isLoading} />}
             {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />}
         </>
     );

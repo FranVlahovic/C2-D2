@@ -15,7 +15,7 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
         <div className="game-screen">
             <div className="game-header">
                 <ProfileBanner name='Computer' deck={computerDeck} />
-                <button className="settings-btn" onClick={toggleMenu}><img src={Cog} alt="Settings Cog" /></button>
+                <button className="settings-btn" onClick={toggleMenu} aria-label="Open Game Menu"><img src={Cog} alt="Settings Cog" /></button>
             </div>
             <div className="game-main">
                 <Scoreboard className={'scoreboard-best'} text='Best Score' value={bestScore} isScore={false} />

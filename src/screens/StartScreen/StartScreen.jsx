@@ -19,7 +19,7 @@ export default function StartScreen({ handleScreenSwitch }) {
         <div className="startscreen">
             <div className="startscreen-heading">
                 <h1>C2-D2</h1>
-                <p>Press any key to start</p>
+                <p>Click anywhere to begin</p>
             </div>
         </div>
     );

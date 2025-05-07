@@ -1,7 +1,7 @@
-import Deck from '../GameScreen/Deck';
 import { factions } from '../../data/factions';
+import FactionChoice from './FactionChoice';
 
-export default function FactionScreen({handleChosenDeck, handleScreenSwitch, factionText, handleFactionText, handleLoading, isLoading}) {
+export default function FactionScreen({handleChosenDeck, handleScreenSwitch, handleLoading, isLoading }) {
 
     function handleClick(faction){
         handleChosenDeck(faction)
@@ -12,20 +12,18 @@ export default function FactionScreen({handleChosenDeck, handleScreenSwitch, fac
         }, 3000);
     }
 
-    function handleMouseEnter(factionName){
-        !isLoading && handleFactionText(factionName);
-    }
-
-    function handleMouseLeave(){
-        !isLoading && handleFactionText('Choose your Faction'); 
-    }
-
     return (
         <div className="faction-screen">
-            <h2 className="faction-heading">{factionText}</h2>
+            <div className="faction-select-heading">
+                <h2 className="faction-heading">Choose your Faction</h2>
+                <span>
+                    The path you choose shapes your allegiance, but your destiny remains fixed. 
+                    Your cardback will stand as a testament to your faction until the next game.
+                </span>
+            </div>
             <div className="faction-select-container">
                 {factions.map((faction) => (
-                    <Deck key={faction.id} data={faction} onClick={()=>handleClick(faction)} onMouseEnter={()=>handleMouseEnter(faction.name)} onMouseLeave={handleMouseLeave} />  
+                    <FactionChoice key={faction.id} name={faction.name} image={faction.image} imageAlt={faction.imageAlt} description={faction.description} handleClick={()=> handleClick(faction)} />
                 ))}
             </div>
             {isLoading && <span className='loader-spinner'></span>}
