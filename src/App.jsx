@@ -31,6 +31,8 @@ export default function App() {
 
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
+    const [activeTab, setActiveTab] = useState('paused');
+
     function handleScreenSwitch(screen) {
         setCurrentScreen(screen);
     }
@@ -79,6 +81,10 @@ export default function App() {
 
     function toggleMenu(){
         setIsMenuVisible(prev => !prev);
+    }
+
+    function handleTabSwitch(tab) {
+        setActiveTab(tab);
     }
 
     // FETCH CARD IMAGES
@@ -135,7 +141,7 @@ export default function App() {
             {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} bestScore={bestScore} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} handleLoading={handleLoading} isLoading={isLoading} />}
-            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />}
+            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} handleTabSwitch={handleTabSwitch} activeTab={activeTab} />}
         </>
     );
 }

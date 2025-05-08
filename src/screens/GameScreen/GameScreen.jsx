@@ -9,7 +9,7 @@ import CardComponent from "./CardComponent";
 
 import GameMenu from "./GameMenu/GameMenu";
 
-export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown, isMenuVisible, toggleMenu}){
+export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown, isMenuVisible, toggleMenu, handleTabSwitch, activeTab }){
     
     return (
         <div className="game-screen">
@@ -41,7 +41,7 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
             <div className="game-footer">
                 <ProfileBanner name={playerName} deck={playerDeck} />
             </div>
-            {isMenuVisible && <GameMenu />}
+            {isMenuVisible && <GameMenu handleTabSwitch={handleTabSwitch} activeTab={activeTab} />}
         </div>
     )
 }

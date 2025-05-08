@@ -1,6 +1,7 @@
 export default function SettingsMenu(){
     return (
         <div className="settings-buttons">
+            <button>PROFILE</button>
             <button>CONTROLS</button>
             <button>GRAPHICS</button>
             <button>AUDIO</button>

@@ -3,14 +3,14 @@ import PausedMenu from "./PausedMenu";
 import RenderedMenu from "./RenderedMenu";
 import SettingsMenu from "./SettingsMenu";
 
-export default function GameMenu(){
+export default function GameMenu({ handleTabSwitch, activeTab }){
     return (
         <div className="game-menu">
-            <GameMenuHeader />
+            <GameMenuHeader handleTabSwitch={handleTabSwitch} />
             <div className="game-menu-main">
                 <div className="game-menu-buttons">
-                    <PausedMenu />
-                    <SettingsMenu />
+                    {activeTab === 'paused' && <PausedMenu />}
+                    {activeTab === 'settings' && <SettingsMenu />}
                 </div>
                 <div className="game-menu-buttons-rendered">
                     <RenderedMenu />

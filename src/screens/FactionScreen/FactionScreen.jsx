@@ -23,7 +23,7 @@ export default function FactionScreen({handleChosenDeck, handleScreenSwitch, han
             </div>
             <div className="faction-select-container">
                 {factions.map((faction) => (
-                    <FactionChoice key={faction.id} name={faction.name} image={faction.image} imageAlt={faction.imageAlt} description={faction.description} handleClick={()=> handleClick(faction)} />
+                    <FactionChoice key={faction.id} name={faction.name} image={faction.image} imageAlt={faction.imageAlt} description={faction.description} handleClick={()=> handleClick(faction)} isLoading={isLoading} />
                 ))}
             </div>
             {isLoading && <span className='loader-spinner'></span>}

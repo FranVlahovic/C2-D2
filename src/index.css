@@ -28,6 +28,9 @@ img {
 #root {
     background-color: black;
 }
+button {
+    transition: 0.4s ease-in-out;
+}
 
 /* ANIMATIONS */
 @keyframes blink-animation {
@@ -188,7 +191,7 @@ img {
     display: flex;
     position: absolute;
     background-color: transparent;
-    color: var(--primary-text-color);
+    color: var(--card-text-border);
     cursor: pointer;
     top: 2em;
     right: 2em;
@@ -197,6 +200,10 @@ img {
     padding: 0.5em 1.2em;
     border: 2px solid var(--card-text-border);
     border-radius: 0.5em;
+}
+.skip-btn:hover {
+    border: 2px solid var(--primary-text-color);
+    color: var(--primary-text-color);
 }
 
 .loader {
@@ -231,11 +238,26 @@ img {
     align-items: center;
     justify-content: center;
     position: relative;
+    gap: 3em;
+    z-index: 1;
+}
+.faction-screen::before {
+    content: '';
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: -1;
 }
 
-.faction-select-container {
+.faction-select-heading {
     display: flex;
-    gap: 5em;
+    flex-direction: column;
+    align-items: center;
+    max-width: 40%;
 }
 .faction-heading {
     font-family: 'StarJedi';
@@ -243,28 +265,61 @@ img {
     font-weight: 100;
     letter-spacing: 0.05em;
     color: var(--primary-text-color);
-    margin-bottom: 2em;
+}
+.faction-select-heading span {
+    font-family: 'Bruno Ace';
+    color: var(--primary-text-color);
+    font-size: 1rem;
+    line-height: 1.5em;
 }
 
-.cardback {
-    border-radius: 2em;
-    padding: 1em;
+.faction-select-container {
+    display: flex;
+    gap: 4em;
+}
+
+.faction-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 20em;
+    height: 28em;
     background-color: var(--card-background);
-    transition: transform 0.3s ease-in-out;
+    border-radius: 0.5em;
+    padding: 4em 1em 2em 1em;
+    gap: 4em;
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out;
 }
-.cardback-border {
-    background-color: transparent;
-    border: 2px solid var(--card-text-border);
-    border-radius: 1em;
-    padding: 6em 3em;
-}
-.cardback-border img {
-    max-width: 5em;
+.faction-card img {
+    max-width: 7em;
     filter: var(--factions);
 }
-.cardback:hover {
+.faction-card:hover {
+    border: 2px solid var(--card-text-border);
     transform: scale(1.05);
-    box-shadow: var(--primary-text-color) 0px 0px 10px 0px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-family: 'Bruno Ace';
+    font-weight: 100;
+    font-size: 0.8rem;
+    gap: 1.5em;
+    color: var(--card-text-border);
+    line-height: 1.5em;
+}
+.card-info h2 {
+    color: var(--primary-text-color);
+    font-weight: 100;
 }
 
 .loader-spinner {
@@ -453,6 +508,23 @@ form span {
     font-weight: 400;
 }
 
+.cardback {
+    border-radius: 2em;
+    padding: 1em;
+    background-color: var(--card-background);
+    transition: transform 0.3s ease-in-out;
+}
+.cardback-border {
+    background-color: transparent;
+    border: 2px solid var(--card-text-border);
+    border-radius: 1em;
+    padding: 6em 3em;
+}
+.cardback-border img {
+    max-width: 5em;
+    filter: var(--factions);
+}
+
 .game-main {
     display: flex;
     flex-direction: column;
@@ -489,6 +561,13 @@ form span {
     border-radius: 0.8em;
     cursor: pointer;
 }
+
+.higher-btn:hover,
+.lower-btn:hover {
+    box-shadow: 0px 0px 7px var(--primary-text-color);
+    transition: 0.4s ease-in-out;
+}
+
 .lower-btn img,
 .higher-btn img {
     width: 3em;
@@ -604,6 +683,7 @@ form span {
 .game-menu {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -613,11 +693,11 @@ form span {
     background-color: rgba(8, 8, 8, 0.6);
     backdrop-filter: blur(5px);
     z-index: 2;
-    gap: 4em;
 }
 
 .game-menu-header {
     display: flex;
+    align-items: center;
     font-size: 2em;
     gap: 2em;
 }
@@ -637,7 +717,7 @@ form span {
 }
 
 .game-menu-buttons {
-    width: 50%;
+    width: 49%;
 }
 
 .paused-buttons,
@@ -645,11 +725,23 @@ form span {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2em;
+    gap: 2.5em;
 }
 .game-menu-buttons button {
     font-family: 'Bruno Ace';
     font-size: 1.2rem;
     font-weight: 100;
     color: var(--primary-text-color);
+}
+
+.game-menu-header button:hover,
+.paused-buttons button:hover,
+.settings-buttons button:hover {
+    color: var(--primary-text-color);
+}
+
+.game-menu-header button,
+.paused-buttons button,
+.settings-buttons button {
+    color: var(--card-text-border);
 }
