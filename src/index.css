@@ -17,6 +17,12 @@
     --card-text-border: #b3b3b3;
     --factions: brightness(0) saturate(100%) invert(100%) sepia(96%)
         saturate(15%) hue-rotate(212deg) brightness(104%) contrast(104%);
+
+    --font-one: 2rem;
+    --font-two: 1.2rem;
+    --font-three: 1rem;
+    --font-four: 0.9rem;
+    --font-five: 0.8rem;
 }
 
 img {
@@ -149,7 +155,7 @@ button {
     color: var(--primary-text-color);
 }
 .startscreen-heading p {
-    font-size: 1.2rem;
+    font-size: var(--font-two);
     font-family: 'Bruno Ace';
     color: var(--primary-text-color);
     animation: blink-animation 3s infinite;
@@ -175,13 +181,13 @@ button {
 
 .disclaimer-section h2 {
     font-family: 'StarJedi';
-    font-size: 2rem;
+    font-size: var(--font-one);
     font-weight: 100;
     letter-spacing: 0.05em;
     color: var(--primary-text-color);
 }
 .disclaimer-section p {
-    font-size: 1.2rem;
+    font-size: var(--font-two);
     font-family: 'Bruno Ace';
     text-align: center;
     color: var(--primary-text-color);
@@ -196,7 +202,7 @@ button {
     top: 2em;
     right: 2em;
     font-family: 'Bruno Ace';
-    font-size: 1em;
+    font-size: var(--font-three);
     padding: 0.5em 1.2em;
     border: 2px solid var(--card-text-border);
     border-radius: 0.5em;
@@ -261,7 +267,7 @@ button {
 }
 .faction-heading {
     font-family: 'StarJedi';
-    font-size: 2rem;
+    font-size: var(--font-one);
     font-weight: 100;
     letter-spacing: 0.05em;
     color: var(--primary-text-color);
@@ -269,7 +275,7 @@ button {
 .faction-select-heading span {
     font-family: 'Bruno Ace';
     color: var(--primary-text-color);
-    font-size: 1rem;
+    font-size: var(--font-three);
     line-height: 1.5em;
 }
 
@@ -300,9 +306,19 @@ button {
     transform: scale(1.05);
 }
 
-.disabled {
+.selected {
     pointer-events: none;
-    opacity: 0.95;
+    border: 2px solid var(--card-text-border);
+    transform: scale(1.05);
+}
+
+.faction-card.disabled {
+    pointer-events: none;
+    cursor: none;
+}
+.faction-card.disabled:hover {
+    border: none;
+    transform: none;
 }
 
 .card-info {
@@ -312,7 +328,7 @@ button {
     width: 100%;
     font-family: 'Bruno Ace';
     font-weight: 100;
-    font-size: 0.8rem;
+    font-size: var(--font-five);
     gap: 1.5em;
     color: var(--card-text-border);
     line-height: 1.5em;
@@ -375,7 +391,7 @@ form {
 }
 
 form input {
-    font-size: 1.2rem;
+    font-size: var(--font-two);
     font-weight: 600;
     font-family: 'Bruno Ace';
     text-align: center;
@@ -396,7 +412,7 @@ form span {
     display: none;
     position: absolute;
     right: -0.8em;
-    font-size: 1.1rem;
+    font-size: var(--font-two);
     color: var(--primary-text-color);
 }
 .invalid-input {
@@ -413,13 +429,13 @@ form span {
 }
 .introduction-heading h2 {
     font-family: 'StarJedi';
-    font-size: 2rem;
+    font-size: var(--font-one);
     font-weight: 100;
     letter-spacing: 0.05em;
     color: var(--primary-text-color);
 }
 .introduction-heading p {
-    font-size: 1.2rem;
+    font-size: var(--font-two);
     font-family: 'Bruno Ace';
     text-align: center;
     color: var(--primary-text-color);
@@ -504,7 +520,7 @@ form span {
 .scoreboard-score span {
     color: var(--primary-text-color);
     font-family: 'Bruno Ace';
-    font-size: 0.8rem;
+    font-size: var(--font-five);
     font-weight: 400;
 }
 
@@ -594,7 +610,7 @@ form span {
     display: flex;
     align-items: center;
     padding: 0.5em;
-    font-size: 0.9rem;
+    font-size: var(--font-four);
     color: var(--primary-text-color);
     background-color: var(--card-background);
     border: 2px solid var(--card-text-border);
@@ -620,7 +636,7 @@ form span {
 }
 .card-container h2 {
     font-family: 'Bruno Ace';
-    font-size: 1.2rem;
+    font-size: var(--font-two);
     font-weight: 100;
     color: var(--primary-text-color);
     max-width: 8em;
@@ -647,7 +663,7 @@ form span {
     border: 1px solid var(--card-text-border);
     border-radius: 4em;
     font-family: 'Bruno Ace';
-    font-size: 1.2em;
+    font-size: var(--font-two);
     padding: 0.2em 0.4em;
     color: var(--card-text-border);
     position: absolute;
@@ -698,8 +714,12 @@ form span {
 .game-menu-header {
     display: flex;
     align-items: center;
-    font-size: 2em;
+    font-size: var(--font-one);
     gap: 2em;
+}
+
+.game-menu-header button {
+    padding: 0.3em 0.6em;
 }
 
 .game-menu button {
@@ -707,17 +727,18 @@ form span {
     background-color: transparent;
     border: none;
     font-family: 'Bruno Ace';
-    font-size: 1rem;
+    font-size: var(--font-three);
     font-weight: 100;
     color: var(--primary-text-color);
 }
 
 .game-menu-main {
     display: flex;
+    height: 70%;
 }
 
 .game-menu-buttons {
-    width: 49%;
+    width: 50%;
 }
 
 .paused-buttons,
@@ -729,7 +750,7 @@ form span {
 }
 .game-menu-buttons button {
     font-family: 'Bruno Ace';
-    font-size: 1.2rem;
+    font-size: var(--font-two);
     font-weight: 100;
     color: var(--primary-text-color);
 }
@@ -744,4 +765,58 @@ form span {
 .paused-buttons button,
 .settings-buttons button {
     color: var(--card-text-border);
+}
+
+button.selected-tab {
+    color: var(--primary-text-color);
+    border: 2px solid var(--card-text-border);
+    padding: 0.3em 0.6em;
+    border-radius: 0.4em;
+    transition: none;
+}
+
+.game-menu-buttons-rendered {
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-text-color);
+    font-family: 'Bruno Ace';
+}
+.option-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+.option-preview h2 {
+    font-size: var(--font-two);
+    font-weight: 100;
+}
+.option-preview p {
+    font-size: var(--font-three);
+    color: var(--card-text-border);
+}
+
+.game-menu-footer {
+    display: flex;
+}
+
+.game-menu-footer .back-control {
+    display: flex;
+    align-items: center;
+    font-family: 'Bruno Ace';
+    gap: 0.5em;
+}
+.back-control span {
+    background-color: var(--card-text-border);
+    color: var(--card-background);
+    font-size: var(--font-five);
+    border: 2px solid var(--card-text-border);
+    border-radius: 0.4em;
+    padding: 0.3em 0.1em;
+    font-weight: 800;
+}
+
+.back-control h3 {
+    font-size: var(--font-three);
+    color: var(--primary-text-color);
+    font-weight: 100;
 }

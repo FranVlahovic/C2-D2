@@ -15,7 +15,7 @@ export default function App() {
 
     const [playerName, setPlayerName] = useState('');
     const [nameError, setNameError] = useState('');
-    
+
     const [fullCards, setFullCards] = useState([]);
     const [playerDeck, setPlayerDeck] = useState();
     const [computerDeck, setComputerDeck] = useState();
@@ -30,8 +30,9 @@ export default function App() {
     const [cardShown, setCardShown] = useState(false);
 
     const [isMenuVisible, setIsMenuVisible] = useState(false);
-
     const [activeTab, setActiveTab] = useState('paused');
+    const [activeOption, setActiveOption] = useState('');
+    const [optionPreview, setOptionPreview] = useState('');
 
     function handleScreenSwitch(screen) {
         setCurrentScreen(screen);
@@ -64,27 +65,57 @@ export default function App() {
                 setBestScore(newScore);
             }
 
-            setTimeout(() => {
+        }
+        setTimeout(() => {
+            if(correctGuess){
                 setComputerCard(randomItem(fullCards));
                 setPlayerCard(randomItem(fullCards));
-                setCardShown(false);
-            }, 1500);
-
-        } else {
-            setTimeout(() => {
-                setScore(0);
-                setCardShown(false);
-            }, 1500)
-            // setCurrentScreen('game-over');
-        }
+            } else{
+                resetScore();
+                handleScreenSwitch('game-over');
+            }
+            setCardShown(false);
+        }, 1500);
     }
 
-    function toggleMenu(){
-        setIsMenuVisible(prev => !prev);
+    function resetScore(){
+        setScore(0);   
+    }
+
+    function resetStart(){
+        setCurrentScreen('start');
+        setPlayerName('');
+        setScore(0);
+        setPlayerDeck();
+        setIsMenuVisible(false);
+        setActiveTab('paused');
+        setActiveOption('');
+        setOptionPreview('');
+    }
+
+    function openMenu(){
+        setIsMenuVisible(true);
+        setActiveTab('paused');
+    }
+
+    function closeMenu(){
+        setIsMenuVisible(false);
+        setActiveOption('');
+        setOptionPreview('');
     }
 
     function handleTabSwitch(tab) {
         setActiveTab(tab);
+        setActiveOption('');
+        setOptionPreview('');
+    }
+
+    function handleActiveOption(option){
+        setActiveOption(option);
+    }
+
+    function handleOptionPreview(option){
+        setOptionPreview(option);
     }
 
     // FETCH CARD IMAGES
@@ -134,6 +165,22 @@ export default function App() {
         localStorage.setItem('bestScore', bestScore);
     }, [bestScore]);
 
+    //ESCAPE KEY LOGIC
+    useEffect(() => {
+        function handleKeyDown(e){
+            if(e.key === 'Escape'){
+                closeMenu();
+            }
+        }
+        if(isMenuVisible){
+            document.addEventListener('keydown', handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+    }, [isMenuVisible]);
+
 
     return (
         <>
@@ -141,7 +188,7 @@ export default function App() {
             {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} bestScore={bestScore} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} handleLoading={handleLoading} isLoading={isLoading} />}
-            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} handleTabSwitch={handleTabSwitch} activeTab={activeTab} />}
+            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} openMenu={openMenu} closeMenu={closeMenu} handleTabSwitch={handleTabSwitch} activeTab={activeTab} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} />}
         </>
     );
 }

@@ -1,11 +1,19 @@
-export default function SettingsMenu(){
+import TextButton from "../../../components/TextButton";
+
+export default function SettingsMenu({ handleActiveOption, handleOptionPreview }){
+    const buttons = [
+        { name: 'profile', action: () => handleActiveOption('profile') },
+        { name: 'controls', action: () => handleActiveOption('controls') },
+        { name: 'graphics', action: () => handleActiveOption('graphics') },
+        { name: 'audio', action: () => handleActiveOption('audio') },
+        { name: 'credits', action: () => handleActiveOption('credits') },
+    ]
+    
     return (
         <div className="settings-buttons">
-            <button>PROFILE</button>
-            <button>CONTROLS</button>
-            <button>GRAPHICS</button>
-            <button>AUDIO</button>
-            <button>CREDITS</button>
+            {buttons.map(({ name, action }) => (
+                <TextButton key={name} onMouseEnter={()=> handleOptionPreview(name)} onMouseLeave={()=>handleOptionPreview('')} onClick={action} text={name.toUpperCase()} />
+            ))}
         </div>
     );
 

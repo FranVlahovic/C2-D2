@@ -1,11 +1,16 @@
+import { useState } from 'react';
+
 import { factions } from '../../data/factions';
 import FactionChoice from './FactionChoice';
 
 export default function FactionScreen({handleChosenDeck, handleScreenSwitch, handleLoading, isLoading }) {
 
+    const [selectedFactionCard, setSelectedFactionCard] = useState();
+
     function handleClick(faction){
-        handleChosenDeck(faction)
-        handleLoading(true);
+        setSelectedFactionCard(faction.id);
+        handleChosenDeck(faction);
+        handleLoading(true);;
         setTimeout(() => {
             handleLoading(false);
             handleScreenSwitch('game')
@@ -23,7 +28,7 @@ export default function FactionScreen({handleChosenDeck, handleScreenSwitch, han
             </div>
             <div className="faction-select-container">
                 {factions.map((faction) => (
-                    <FactionChoice key={faction.id} name={faction.name} image={faction.image} imageAlt={faction.imageAlt} description={faction.description} handleClick={()=> handleClick(faction)} isLoading={isLoading} />
+                    <FactionChoice key={faction.id} name={faction.name} image={faction.image} imageAlt={faction.imageAlt} description={faction.description} handleClick={()=> handleClick(faction)} isLoading={isLoading} isSelected={selectedFactionCard === faction.id} />
                 ))}
             </div>
             {isLoading && <span className='loader-spinner'></span>}
