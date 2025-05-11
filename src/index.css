@@ -18,6 +18,7 @@
     --factions: brightness(0) saturate(100%) invert(100%) sepia(96%)
         saturate(15%) hue-rotate(212deg) brightness(104%) contrast(104%);
 
+    --rendered-tab: rgba(8, 8, 8, 0.5);
     --font-one: 2rem;
     --font-two: 1.2rem;
     --font-three: 1rem;
@@ -735,7 +736,6 @@ form span {
 .game-menu-main {
     display: flex;
     height: 70%;
-    border: 1px solid red;
 }
 
 .game-menu-buttons {
@@ -778,7 +778,7 @@ button.selected-tab {
 
 /* RENDERED MENU */
 .game-menu-buttons-rendered {
-    width: 50%;
+    width: 45%;
 }
 
 .settings-rendered-container {
@@ -793,27 +793,26 @@ button.selected-tab {
     align-items: center;
     height: 4em;
     border: 1px solid var(--card-text-border);
+    border-radius: 0.5em;
     padding-left: 1em;
+    background-color: var(--rendered-tab);
 }
 
-.rendered-tab-title {
-    border: 1px solid red;
-}
 .rendered-tab-title h3 {
     font-weight: 100;
     font-size: var(--font-four);
 }
 
 .rendered-tab-change {
-    max-width: 50%;
-    border: 1px solid red;
+    max-width: 40%;
+    justify-self: center;
 }
 
 .rendered-tab form {
     margin-top: 0;
 }
 .rendered-tab input {
-    background-color: transparent;
+    background-color: var(--card-background);
     border: 2px solid var(--card-text-border);
     font-size: var(--font-four);
     color: var(--primary-text-color);
@@ -830,6 +829,23 @@ button.selected-tab {
     border: 2px solid var(--card-text-border);
     border-radius: 0.4em;
     padding: 0.3em;
+}
+
+.rendered-tab-slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.rendered-tab-slider button {
+    background-color: transparent;
+    padding: 0.1em 0.2em;
+    font-size: var(--font-two);
+}
+
+.rendered-tab-change,
+.rendered-tab-title {
+    width: 100%;
 }
 
 .game-menu-buttons-rendered {
