@@ -9,7 +9,34 @@ import CardComponent from "./CardComponent";
 
 import GameMenu from "./GameMenu/GameMenu";
 
-export default function GameScreen({playerDeck, computerDeck, playerCard, computerCard, playerName, score, bestScore, handleGuess, cardShown, isMenuVisible, openMenu, closeMenu, handleTabSwitch, activeTab, handleScreenSwitch, resetScore, resetStart, activeOption, handleActiveOption, optionPreview, handleOptionPreview, setPlayerName, handleChosenDeck }){
+export default function GameScreen({playerDeck, 
+    computerDeck, 
+    playerCard, 
+    computerCard, 
+    playerName, 
+    score, 
+    bestScore, 
+    handleGuess, 
+    cardShown, 
+    isMenuVisible, 
+    openMenu, 
+    closeMenu, 
+    handleTabSwitch, 
+    activeTab, 
+    handleScreenSwitch, 
+    resetScore, 
+    resetStart, 
+    activeOption, 
+    handleActiveOption, 
+    optionPreview, 
+    handleOptionPreview, 
+    setPlayerName, 
+    handleChosenDeck, 
+    handleToggleSound,
+    soundEnabled,
+    handleToggleMusic, 
+    musicEnabled
+}){
     
     return (
         <div className="game-screen">
@@ -41,7 +68,7 @@ export default function GameScreen({playerDeck, computerDeck, playerCard, comput
             <div className="game-footer">
                 <ProfileBanner name={playerName} deck={playerDeck} />
             </div>
-            {isMenuVisible && <GameMenu handleTabSwitch={handleTabSwitch} activeTab={activeTab} closeMenu={closeMenu} handleScreenSwitch={handleScreenSwitch} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} />}
+            {isMenuVisible && <GameMenu handleTabSwitch={handleTabSwitch} activeTab={activeTab} closeMenu={closeMenu} handleScreenSwitch={handleScreenSwitch} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} />}
         </div>
     )
 }

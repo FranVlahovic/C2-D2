@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useSound from 'use-sound';
 
 import { factions } from './data/factions.js';
 import { cards } from './data/cardData.js';
@@ -9,7 +10,18 @@ import FactionScreen from './screens/FactionScreen/FactionScreen.jsx';
 import IntroductionScreen from './screens/IntroductionScreen/Introduction.jsx';
 import GameScreen from './screens/GameScreen/GameScreen.jsx';
 
+import ClickSound from './assets/sounds/click-sound.mp3';
+import CardSound from './assets/sounds/cards-sound.mp3';
+import BackgroundMusic from './assets/sounds/website-music.mp3';
+
 export default function App() {
+    const [playClick] = useSound(ClickSound, { volume: 0.15 });
+    const [playCard] = useSound(CardSound, { volume: 0.15 });
+    const [playBackground, { stop }] = useSound(BackgroundMusic, { volume: 0.03, loop: true, playbackRate: 0.7 });
+
+    const [soundEnabled, setSoundEnabled] = useState(false);
+    const [musicEnabled, setMusicEnabled] = useState(false);
+    
     const [currentScreen, setCurrentScreen] = useState('start');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -34,12 +46,21 @@ export default function App() {
     const [activeOption, setActiveOption] = useState('');
     const [optionPreview, setOptionPreview] = useState('');
 
+    function handleToggleSound(){
+        setSoundEnabled(prev=> !prev);
+    }
+
+    function handleToggleMusic(){
+        setMusicEnabled(prev=> !prev);
+    }
+
     function handleScreenSwitch(screen) {
         setCurrentScreen(screen);
     }
 
     function handleChosenDeck(deck){
-        setPlayerDeck(deck)
+        setPlayerDeck(deck);
+        soundEnabled && playClick();
     }
 
     function handleLoading(value){
@@ -51,6 +72,7 @@ export default function App() {
     }
 
     function handleGuess(guess){
+        soundEnabled && playCard();
         setCardShown(true);
     
         const correctGuess = 
@@ -60,11 +82,11 @@ export default function App() {
         if(correctGuess){
             const newScore = score + 1;
             setScore(newScore);
-
+            
             if(newScore > bestScore){
                 setBestScore(newScore);
             }
-
+            
         }
         setTimeout(() => {
             if(correctGuess){
@@ -94,23 +116,27 @@ export default function App() {
     }
 
     function openMenu(){
+        soundEnabled && playClick();
         setIsMenuVisible(true);
         setActiveTab('paused');
     }
 
     function closeMenu(){
+        soundEnabled && playClick();
         setIsMenuVisible(false);
         setActiveOption('');
         setOptionPreview('');
     }
 
     function handleTabSwitch(tab) {
+        soundEnabled && playClick();
         setActiveTab(tab);
         setActiveOption('');
         setOptionPreview('');
     }
 
     function handleActiveOption(option){
+        soundEnabled && playClick();
         setActiveOption(option);
     }
 
@@ -147,18 +173,22 @@ export default function App() {
     // RANDOMIZE CARDS & ENEMY DECK ON GAME PAGE LOAD
     useEffect(() => {
         if(currentScreen === 'game' && fullCards.length > 0) {
+            soundEnabled && playCard();
+            musicEnabled ? playBackground() : stop();
+            
+            
             setComputerDeck(randomItem(factions));
             setComputerCard(randomItem(fullCards));
             setPlayerCard(randomItem(fullCards));
         }
-    }, [currentScreen, fullCards]);
+    }, [currentScreen, fullCards, playBackground, playCard, soundEnabled, musicEnabled, stop]);
 
     // AVOIDING DUPLICATES
     useEffect(() => {
         if (playerCard && computerCard && playerCard.name === computerCard.name){
             setPlayerCard(randomItem(fullCards))
         }
-    }, [playerCard, computerCard, fullCards])
+    }, [playerCard, computerCard, fullCards, playCard])
 
     // GET SCORE FROM LOCAL STORAGE
     useEffect(() => {
@@ -188,7 +218,7 @@ export default function App() {
             {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} bestScore={bestScore} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} handleLoading={handleLoading} isLoading={isLoading} />}
-            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} openMenu={openMenu} closeMenu={closeMenu} handleTabSwitch={handleTabSwitch} activeTab={activeTab} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} setPlayerName={setPlayerName} handleChosenDeck={handleChosenDeck} />}
+            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} openMenu={openMenu} closeMenu={closeMenu} handleTabSwitch={handleTabSwitch} activeTab={activeTab} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} setPlayerName={setPlayerName} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} musicEnabled={musicEnabled} handleToggleMusic={handleToggleMusic} />}
         </>
     );
 }

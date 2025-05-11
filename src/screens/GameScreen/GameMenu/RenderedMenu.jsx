@@ -1,4 +1,5 @@
 import OptionPreview from "./OptionPreview";
+import AudioTab from "./Tabs/AudioTab";
 import ControlsTab from "./Tabs/ControlsTab";
 import GraphicsTab from "./Tabs/GraphicsTab";
 import ProfileTab from "./Tabs/ProfileTab";
@@ -10,6 +11,10 @@ export default function RenderedMenu({
     setPlayerName,
     playerDeck,
     handleChosenDeck,
+    handleToggleSound,
+    soundEnabled,
+    handleToggleMusic, 
+    musicEnabled
 }) {
     const options = [
         { name: 'resume', description: 'Continue your current game' },
@@ -53,6 +58,10 @@ export default function RenderedMenu({
 
             {!optionPreview && activeOption === 'graphics' && (
                 <GraphicsTab />
+            )}
+
+            {!optionPreview && activeOption === 'audio' && (
+                <AudioTab handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} />
             )}
         </>
     );

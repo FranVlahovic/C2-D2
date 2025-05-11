@@ -843,6 +843,10 @@ button.selected-tab {
     font-size: var(--font-two);
 }
 
+.settings-rendered-container p {
+    font-size: var(--font-four);
+}
+
 .rendered-tab-change,
 .rendered-tab-title {
     width: 100%;

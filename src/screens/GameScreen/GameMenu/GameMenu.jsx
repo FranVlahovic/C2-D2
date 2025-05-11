@@ -3,7 +3,27 @@ import PausedMenu from "./PausedMenu";
 import RenderedMenu from "./RenderedMenu";
 import SettingsMenu from "./SettingsMenu";
 
-export default function GameMenu({ handleTabSwitch, activeTab, closeMenu, handleScreenSwitch, resetScore, resetStart, activeOption, handleActiveOption, optionPreview, handleOptionPreview, playerName, setPlayerName, playerDeck, handleChosenDeck }){
+export default function GameMenu({ 
+    handleTabSwitch, 
+    activeTab, 
+    closeMenu, 
+    handleScreenSwitch, 
+    resetScore, 
+    resetStart, 
+    activeOption, 
+    handleActiveOption, 
+    optionPreview, 
+    handleOptionPreview, 
+    playerName, 
+    setPlayerName, 
+    playerDeck, 
+    handleChosenDeck, 
+    handleToggleSound,
+    soundEnabled, 
+    handleToggleMusic, 
+    musicEnabled
+}){
+
     function handleRestart(){
         closeMenu();
         resetScore();
@@ -18,7 +38,7 @@ export default function GameMenu({ handleTabSwitch, activeTab, closeMenu, handle
                     {activeTab === 'settings' && <SettingsMenu handleActiveOption={handleActiveOption} handleOptionPreview={handleOptionPreview} activeOption={activeOption} />}
                 </div>
                 <div className="game-menu-buttons-rendered">
-                    <RenderedMenu activeOption={activeOption} optionPreview={optionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} />
+                    <RenderedMenu activeOption={activeOption} optionPreview={optionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} />
                 </div>
             </div>
 
