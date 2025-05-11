@@ -735,6 +735,7 @@ form span {
 .game-menu-main {
     display: flex;
     height: 70%;
+    border: 1px solid red;
 }
 
 .game-menu-buttons {
@@ -775,6 +776,62 @@ button.selected-tab {
     transition: none;
 }
 
+/* RENDERED MENU */
+.game-menu-buttons-rendered {
+    width: 50%;
+}
+
+.settings-rendered-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.rendered-tab {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    height: 4em;
+    border: 1px solid var(--card-text-border);
+    padding-left: 1em;
+}
+
+.rendered-tab-title {
+    border: 1px solid red;
+}
+.rendered-tab-title h3 {
+    font-weight: 100;
+    font-size: var(--font-four);
+}
+
+.rendered-tab-change {
+    max-width: 50%;
+    border: 1px solid red;
+}
+
+.rendered-tab form {
+    margin-top: 0;
+}
+.rendered-tab input {
+    background-color: transparent;
+    border: 2px solid var(--card-text-border);
+    font-size: var(--font-four);
+    color: var(--primary-text-color);
+    max-width: 100%;
+}
+
+.rendered-tab-change select {
+    width: 100%;
+    text-align: center;
+    background-color: var(--card-background);
+    font-family: 'Bruno Ace';
+    font-weight: 600;
+    color: var(--primary-text-color);
+    border: 2px solid var(--card-text-border);
+    border-radius: 0.4em;
+    padding: 0.3em;
+}
+
 .game-menu-buttons-rendered {
     display: flex;
     flex-direction: column;
@@ -786,7 +843,8 @@ button.selected-tab {
     flex-direction: column;
     gap: 0.4em;
 }
-.option-preview h2 {
+.option-preview h2,
+.settings-rendered-container h2 {
     font-size: var(--font-two);
     font-weight: 100;
 }
