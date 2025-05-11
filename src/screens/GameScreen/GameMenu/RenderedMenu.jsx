@@ -1,6 +1,7 @@
 import OptionPreview from "./OptionPreview";
 import AudioTab from "./Tabs/AudioTab";
 import ControlsTab from "./Tabs/ControlsTab";
+import CreditsTab from "./Tabs/CreditsTab";
 import GraphicsTab from "./Tabs/GraphicsTab";
 import ProfileTab from "./Tabs/ProfileTab";
 
@@ -62,6 +63,10 @@ export default function RenderedMenu({
 
             {!optionPreview && activeOption === 'audio' && (
                 <AudioTab handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} />
+            )}
+
+            {!optionPreview && activeOption === 'credits' && (
+                <CreditsTab />
             )}
         </>
     );

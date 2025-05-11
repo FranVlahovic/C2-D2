@@ -847,6 +847,48 @@ button.selected-tab {
     font-size: var(--font-four);
 }
 
+.settings-rendered-container a {
+    text-decoration: none;
+    color: var(--card-text-border);
+    font-weight: 500;
+    font-style: italic;
+    transition: 0.4s ease-in-out;
+}
+.settings-rendered-container a:hover {
+    color: var(--primary-text-color);
+}
+
+.rendered-tab-credits {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.rendered-tab-credits h3 {
+    font-weight: 100;
+    font-size: var(--font-three);
+}
+.rendered-tab-credits p {
+    font-size: var(--font-four);
+}
+.credits-sources {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.rendered-tab-copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5em;
+    line-height: 1.4em;
+}
+.rendered-tab-copyright h3 {
+    font-weight: 100;
+}
+
 .rendered-tab-change,
 .rendered-tab-title {
     width: 100%;
@@ -861,7 +903,7 @@ button.selected-tab {
 .option-preview {
     display: flex;
     flex-direction: column;
-    gap: 0.4em;
+    gap: 0.5em;
 }
 .option-preview h2,
 .settings-rendered-container h2 {

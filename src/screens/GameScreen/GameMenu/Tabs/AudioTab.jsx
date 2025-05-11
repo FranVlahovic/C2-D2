@@ -1,5 +1,5 @@
 import OptionPreview from "../OptionPreview";
-import TabSlider from "./TabSlider";
+import TabSlider from "../TabSlider";
 
 export default function AudioTab({ handleToggleSound, soundEnabled, handleToggleMusic, musicEnabled }){
     

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import OptionPreview from "../OptionPreview";
-import TabSlider from "./TabSlider";
+import TabSlider from "../TabSlider";
 
 export default function ControlsTab(){
     const [keyboardEnabled, setKeyboardEnabled] = useState(false);
