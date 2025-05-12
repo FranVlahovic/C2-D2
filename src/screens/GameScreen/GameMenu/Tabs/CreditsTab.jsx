@@ -2,7 +2,7 @@ import OptionPreview from "../OptionPreview";
 
 export default function CreditsTab(){
     return(
-        <div className="settings-rendered-container">
+        <div className="settings-rendered-container credits">
             <OptionPreview heading='CREDITS' description='View game credits' />
 
             <div className="rendered-tab-credits">
