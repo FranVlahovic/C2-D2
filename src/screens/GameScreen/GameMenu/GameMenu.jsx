@@ -7,8 +7,7 @@ export default function GameMenu({
     handleTabSwitch, 
     activeTab, 
     closeMenu, 
-    handleScreenSwitch, 
-    resetScore, 
+    handleScreenSwitch,  
     resetStart, 
     activeOption, 
     handleActiveOption, 
@@ -21,13 +20,10 @@ export default function GameMenu({
     handleToggleSound,
     soundEnabled, 
     handleToggleMusic, 
-    musicEnabled
+    musicEnabled,
+    handleRestart
 }){
 
-    function handleRestart(){
-        closeMenu();
-        resetScore();
-    }
 
     return (
         <div className="game-menu">

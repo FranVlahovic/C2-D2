@@ -13,6 +13,7 @@ import GameScreen from './screens/GameScreen/GameScreen.jsx';
 import ClickSound from './assets/sounds/click-sound.mp3';
 import CardSound from './assets/sounds/cards-sound.mp3';
 import BackgroundMusic from './assets/sounds/website-music.mp3';
+import GameOverScreen from './screens/GameOverScreen/GameOverScreen.jsx';
 
 export default function App() {
     const [playClick] = useSound(ClickSound, { volume: 0.15 });
@@ -33,12 +34,22 @@ export default function App() {
     const [computerDeck, setComputerDeck] = useState();
     const [playerCard, setPlayerCard] = useState();
     const [computerCard, setComputerCard] = useState();
-
+    
     const [score, setScore] = useState(0);
+    
+    const [correctGuesses, setCorrectGuesses] = useState(() => {
+        const storedCorrect = localStorage.getItem('correctGuesses');
+        return storedCorrect ? parseInt(storedCorrect) : 0;
+    });
+    const [wrongGuesses, setWrongGuesses] = useState(() => {
+        const storedWrong = localStorage.getItem('wrongGuesses');
+        return storedWrong ? parseInt(storedWrong) : 0;
+    })
     const [bestScore, setBestScore] = useState(() => {
         const stored = localStorage.getItem('bestScore');
         return stored ? parseInt(stored) : 0;
     });
+    
     const [cardShown, setCardShown] = useState(false);
 
     const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -82,6 +93,7 @@ export default function App() {
         if(correctGuess){
             const newScore = score + 1;
             setScore(newScore);
+            setCorrectGuesses(prev => prev + 1);
             
             if(newScore > bestScore){
                 setBestScore(newScore);
@@ -93,6 +105,7 @@ export default function App() {
                 setComputerCard(randomItem(fullCards));
                 setPlayerCard(randomItem(fullCards));
             } else{
+                setWrongGuesses(prev => prev + 1);
                 resetScore();
                 handleScreenSwitch('game-over');
             }
@@ -100,8 +113,32 @@ export default function App() {
         }, 1500);
     }
 
+    const totalGames = correctGuesses + wrongGuesses;
+    
+    function accPercentage(){
+        if (totalGames === 0){
+            return '0%'
+        };
+        return `${Math.round((correctGuesses / totalGames) * 100)}%`;
+    }
+
+    function avgScore(){
+        if(totalGames === 0){
+            return 0;
+        };
+        return (correctGuesses / totalGames) * 100;
+    }
+    
     function resetScore(){
         setScore(0);   
+    }
+
+    function resetStats(){
+        closeMenu();
+        setScore(0);
+        setBestScore(0);
+        correctGuesses(0);
+        wrongGuesses(0);
     }
 
     function resetStart(){
@@ -113,6 +150,11 @@ export default function App() {
         setActiveTab('paused');
         setActiveOption('');
         setOptionPreview('');
+    }
+
+    function handleRestart(){
+        closeMenu();
+        resetScore();
     }
 
     function openMenu(){
@@ -190,10 +232,18 @@ export default function App() {
         }
     }, [playerCard, computerCard, fullCards, playCard])
 
-    // GET SCORE FROM LOCAL STORAGE
+    // GET BEST SCORE FROM LOCAL STORAGE
     useEffect(() => {
         localStorage.setItem('bestScore', bestScore);
     }, [bestScore]);
+    // GET CORRECT GUESSES FROM LOCAL STORAGE
+    useEffect(() => {
+        localStorage.setItem('correctGuesses', correctGuesses);
+    }, [correctGuesses]);
+    // GET WRONG GUESSES FROM LOCAL STORAGE
+    useEffect(() => {
+        localStorage.setItem('wrongGuesses', wrongGuesses);
+    }, [wrongGuesses]);
 
     //ESCAPE KEY LOGIC
     useEffect(() => {
@@ -218,7 +268,54 @@ export default function App() {
             {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} bestScore={bestScore} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} handleLoading={handleLoading} isLoading={isLoading} />}
-            {currentScreen === 'game' && playerDeck && computerDeck && <GameScreen handleScreenSwitch={handleScreenSwitch} playerDeck={playerDeck} computerDeck={computerDeck} playerCard={playerCard} computerCard={computerCard} playerName={playerName} nameError={nameError} setNameError={setNameError} score={score} bestScore={bestScore} handleGuess={handleGuess} cardShown={cardShown} isMenuVisible={isMenuVisible} openMenu={openMenu} closeMenu={closeMenu} handleTabSwitch={handleTabSwitch} activeTab={activeTab} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} setPlayerName={setPlayerName} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} musicEnabled={musicEnabled} handleToggleMusic={handleToggleMusic} />}
+            {currentScreen === 'game' && playerDeck && computerDeck && 
+            <GameScreen 
+                handleScreenSwitch={handleScreenSwitch} 
+                playerDeck={playerDeck} 
+                computerDeck={computerDeck} 
+                playerCard={playerCard} 
+                computerCard={computerCard} 
+                playerName={playerName} 
+                nameError={nameError} 
+                setNameError={setNameError} 
+                score={score} 
+                bestScore={bestScore} 
+                handleGuess={handleGuess} 
+                cardShown={cardShown} 
+                isMenuVisible={isMenuVisible} 
+                openMenu={openMenu} 
+                closeMenu={closeMenu} 
+                handleTabSwitch={handleTabSwitch} 
+                activeTab={activeTab} 
+                resetScore={resetScore} 
+                resetStart={resetStart} 
+                activeOption={activeOption} 
+                handleActiveOption={handleActiveOption} 
+                optionPreview={optionPreview} 
+                handleOptionPreview={handleOptionPreview} 
+                setPlayerName={setPlayerName} 
+                handleChosenDeck={handleChosenDeck} 
+                handleToggleSound={handleToggleSound} 
+                soundEnabled={soundEnabled} 
+                musicEnabled={musicEnabled} 
+                handleToggleMusic={handleToggleMusic} 
+                handleRestart={handleRestart} 
+            />}
+
+            {currentScreen === 'game-over' && 
+            <GameOverScreen
+                playerName={playerName} 
+                playerDeck={playerDeck} 
+                handleRestart={handleRestart}
+                resetStart={resetStart}
+                totalGames={totalGames} 
+                accPercentage={accPercentage} 
+                correctGuesses={correctGuesses} 
+                wrongGuesses={wrongGuesses}
+                bestScore={bestScore}
+                avgScore={avgScore}
+            />}
         </>
     );
 }
+

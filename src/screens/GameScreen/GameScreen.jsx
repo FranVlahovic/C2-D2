@@ -35,7 +35,8 @@ export default function GameScreen({playerDeck,
     handleToggleSound,
     soundEnabled,
     handleToggleMusic, 
-    musicEnabled
+    musicEnabled,
+    handleRestart
 }){
     
     return (
@@ -68,7 +69,7 @@ export default function GameScreen({playerDeck,
             <div className="game-footer">
                 <ProfileBanner name={playerName} deck={playerDeck} />
             </div>
-            {isMenuVisible && <GameMenu handleTabSwitch={handleTabSwitch} activeTab={activeTab} closeMenu={closeMenu} handleScreenSwitch={handleScreenSwitch} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} />}
+            {isMenuVisible && <GameMenu handleTabSwitch={handleTabSwitch} activeTab={activeTab} closeMenu={closeMenu} handleScreenSwitch={handleScreenSwitch} resetScore={resetScore} resetStart={resetStart} activeOption={activeOption} handleActiveOption={handleActiveOption} optionPreview={optionPreview} handleOptionPreview={handleOptionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} handleRestart={handleRestart} />}
         </div>
     )
 }

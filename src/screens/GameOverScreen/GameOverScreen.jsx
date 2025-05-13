@@ -1,28 +1,35 @@
 import GameOverFooter from "./GameOverFooter";
 import GameOverHeader from "./GameOverHeader";
-import GameOverStatsCard from "./GameOverStatsCard";
+import GameStats from "../../components/GameStats";
 
-export default function GameOverScreen({ score, bestScore, accPercentage, avgScore, gamesPlayed, playerName, updateDate, playerDeck }){
-    const stats = [
-        { title: 'correct', value: score },
-        { title: 'wrong', value: bestScore },
-        { title: 'accuracy', value: accPercentage },
-        
-        { title: 'best score', value: bestScore },
-        { title: 'avg score', value: avgScore },
-        { title: 'total games', value: gamesPlayed },
-    ]
+export default function GameOverScreen({ 
+    playerName, 
+    playerDeck,
+    handleRestart,
+    resetStart,
+    totalGames, 
+    accPercentage, 
+    correctGuesses, 
+    wrongGuesses, 
+    bestScore, 
+    avgScore
+}){
+    // const updateDate = new Date;
+
     return (
         <div className="game-over-screen">
-            <GameOverHeader name={playerName} date={updateDate} faction={playerDeck} />
+            <GameOverHeader name={playerName}  faction={playerDeck} />
+            
+            <GameStats 
+                totalGames={totalGames} 
+                accPercentage={accPercentage} 
+                correctGuesses={correctGuesses} 
+                wrongGuesses={wrongGuesses}
+                bestScore={bestScore}
+                avgScore={avgScore}
+            /> 
 
-            <div className="stats-cards-container">
-                {stats.map((card) => (
-                    <GameOverStatsCard key={card.title} title={card.title} value={card.value} />
-                ))}
-            </div>
-
-            <GameOverFooter />
+            <GameOverFooter playAction={handleRestart} menuAction={resetStart}/>
 
         </div>
     );
