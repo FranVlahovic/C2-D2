@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import TextButton from "../../components/TextButton";
 
-export default function DisclaimerScreen({ handleScreenSwitch, bestScore }) {
+export default function DisclaimerScreen({ handleScreenSwitch, playerName }) {
     useEffect(() => {
         const interval = setInterval(() => {
             handleScreenSwitch('introduction');
@@ -23,7 +23,7 @@ export default function DisclaimerScreen({ handleScreenSwitch, bestScore }) {
                     This project is non-commercial and for entertainment purposes only.
                 </p>
                 <span className="loader"></span>
-                {bestScore > 0 && <TextButton className="skip-btn" text='Skip' onClick={()=> handleScreenSwitch('introduction')} /> }
+                {playerName && <TextButton className="skip-btn" text='Skip' onClick={()=> handleScreenSwitch('introduction')} /> }
             </div>
         </div>
     );

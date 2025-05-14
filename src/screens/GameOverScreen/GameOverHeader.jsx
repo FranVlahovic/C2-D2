@@ -1,14 +1,19 @@
-export default function GameOverHeader({ name, date, faction }){
-    return (
-        <div className="profile-banner-header">
-            <div className="avatar-frame">
-                <img src={faction.image} alt={faction.imageAlt} className="avatar-image" />
-            </div>
+export default function GameOverHeader({ name, faction }){
+    const updatedDate = new Date();
 
-            <div className="profile-name-date">
-                <h2>{name}</h2>
-                <p>Last updated: {date}</p>
+    return (
+        <div className="game-over-header">
+            <div className="profile-banner-header">
+                <div className="avatar-frame">
+                    <img src={faction.image} alt={faction.imageAlt} className="avatar-image" />
+                </div>
+
+                <div className="profile-name-date">
+                    <h2>{name}</h2>
+                    <p>{`As of ${updatedDate.toLocaleString("en-GB", {timeStyle:"short", dateStyle: "long"})}`}</p>
+                </div>
             </div>
+            
         </div>
     );
 }

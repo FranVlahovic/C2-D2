@@ -21,7 +21,8 @@ export default function GameMenu({
     soundEnabled, 
     handleToggleMusic, 
     musicEnabled,
-    handleRestart
+    handleRestart,
+    resetStats
 }){
 
 
@@ -30,7 +31,7 @@ export default function GameMenu({
             <GameMenuHeader handleTabSwitch={handleTabSwitch} activeTab={activeTab} />
             <div className="game-menu-main">
                 <div className="game-menu-buttons">
-                    {activeTab === 'paused' && <PausedMenu closeMenu={closeMenu} handleScreenSwitch={handleScreenSwitch} handleRestart={handleRestart} resetStart={resetStart} handleActiveOption={handleActiveOption} handleOptionPreview={handleOptionPreview} />}
+                    {activeTab === 'paused' && <PausedMenu closeMenu={closeMenu} handleScreenSwitch={handleScreenSwitch} handleRestart={handleRestart} resetStart={resetStart} handleActiveOption={handleActiveOption} handleOptionPreview={handleOptionPreview} resetStats={resetStats} />}
                     {activeTab === 'settings' && <SettingsMenu handleActiveOption={handleActiveOption} handleOptionPreview={handleOptionPreview} activeOption={activeOption} />}
                 </div>
                 <div className="game-menu-buttons-rendered">

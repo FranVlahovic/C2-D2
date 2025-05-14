@@ -15,8 +15,12 @@ export default function GameOverStatsCard({ totalGames, accPercentage, correctGu
             {stats.map((card) => (
                 <div className="stats-card" key={card.title}>
                     <div className="stats-card-circle">
-                        <h3>{card.title}</h3>
+                        <h3>{card.title.toUpperCase()}</h3>
                         <span>{card.value}</span>
+                        <div className="stats-card-dif">
+                            <h3>DIFF</h3>
+                            <span>2</span>
+                        </div>
                     </div>
                 </div>  
             ))}

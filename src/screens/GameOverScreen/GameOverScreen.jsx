@@ -5,19 +5,22 @@ import GameStats from "../../components/GameStats";
 export default function GameOverScreen({ 
     playerName, 
     playerDeck,
-    handleRestart,
     resetStart,
     totalGames, 
     accPercentage, 
     correctGuesses, 
     wrongGuesses, 
     bestScore, 
-    avgScore
+    avgScore,
+    playAgain
 }){
-    // const updateDate = new Date;
 
     return (
         <div className="game-over-screen">
+            <div className="game-over-pre-header">
+                <h2>END OF MATCH</h2>
+            </div>
+
             <GameOverHeader name={playerName}  faction={playerDeck} />
             
             <GameStats 
@@ -29,7 +32,7 @@ export default function GameOverScreen({
                 avgScore={avgScore}
             /> 
 
-            <GameOverFooter playAction={handleRestart} menuAction={resetStart}/>
+            <GameOverFooter playAction={playAgain} menuAction={resetStart}/>
 
         </div>
     );

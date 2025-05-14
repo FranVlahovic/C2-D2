@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Bruno Ace';
 }
 
 :root {
@@ -157,7 +158,6 @@ button {
 }
 .startscreen-heading p {
     font-size: var(--font-two);
-    font-family: 'Bruno Ace';
     color: var(--primary-text-color);
     animation: blink-animation 3s infinite;
 }
@@ -189,7 +189,6 @@ button {
 }
 .disclaimer-section p {
     font-size: var(--font-two);
-    font-family: 'Bruno Ace';
     text-align: center;
     color: var(--primary-text-color);
 }
@@ -202,7 +201,6 @@ button {
     cursor: pointer;
     top: 2em;
     right: 2em;
-    font-family: 'Bruno Ace';
     font-size: var(--font-three);
     padding: 0.5em 1.2em;
     border: 2px solid var(--card-text-border);
@@ -274,7 +272,6 @@ button {
     color: var(--primary-text-color);
 }
 .faction-select-heading span {
-    font-family: 'Bruno Ace';
     color: var(--primary-text-color);
     font-size: var(--font-three);
     line-height: 1.5em;
@@ -327,7 +324,6 @@ button {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    font-family: 'Bruno Ace';
     font-weight: 100;
     font-size: var(--font-five);
     gap: 1.5em;
@@ -394,7 +390,6 @@ form {
 form input {
     font-size: var(--font-two);
     font-weight: 600;
-    font-family: 'Bruno Ace';
     text-align: center;
     padding: 0.3em;
     margin-right: 0.5em;
@@ -437,7 +432,6 @@ form span {
 }
 .introduction-heading p {
     font-size: var(--font-two);
-    font-family: 'Bruno Ace';
     text-align: center;
     color: var(--primary-text-color);
 }
@@ -520,7 +514,6 @@ form span {
 .scoreboard-best span,
 .scoreboard-score span {
     color: var(--primary-text-color);
-    font-family: 'Bruno Ace';
     font-size: var(--font-five);
     font-weight: 400;
 }
@@ -636,7 +629,6 @@ form span {
     border-radius: 2em;
 }
 .card-container h2 {
-    font-family: 'Bruno Ace';
     font-size: var(--font-two);
     font-weight: 100;
     color: var(--primary-text-color);
@@ -663,7 +655,6 @@ form span {
 .card-pwr {
     border: 1px solid var(--card-text-border);
     border-radius: 4em;
-    font-family: 'Bruno Ace';
     font-size: var(--font-two);
     padding: 0.2em 0.4em;
     color: var(--card-text-border);
@@ -727,7 +718,6 @@ form span {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    font-family: 'Bruno Ace';
     font-size: var(--font-three);
     font-weight: 100;
     color: var(--primary-text-color);
@@ -750,7 +740,6 @@ form span {
     gap: 2.5em;
 }
 .game-menu-buttons button {
-    font-family: 'Bruno Ace';
     font-size: var(--font-two);
     font-weight: 100;
     color: var(--primary-text-color);
@@ -823,7 +812,6 @@ button.selected-tab {
     width: 100%;
     text-align: center;
     background-color: var(--card-background);
-    font-family: 'Bruno Ace';
     font-weight: 600;
     color: var(--primary-text-color);
     border: 2px solid var(--card-text-border);
@@ -898,7 +886,6 @@ button.selected-tab {
     display: flex;
     flex-direction: column;
     color: var(--primary-text-color);
-    font-family: 'Bruno Ace';
 }
 .option-preview {
     display: flex;
@@ -922,7 +909,6 @@ button.selected-tab {
 .game-menu-footer .back-control {
     display: flex;
     align-items: center;
-    font-family: 'Bruno Ace';
     gap: 0.5em;
 }
 .back-control span {
@@ -942,5 +928,149 @@ button.selected-tab {
 }
 
 .game-over-screen {
-    background-color: white;
+    background-image: url(assets/images/game-over.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+    position: relative;
+    z-index: 1;
+}
+.game-over-screen::before {
+    content: '';
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+/* GAME OVER HEADER */
+.game-over-pre-header {
+    display: flex;
+    width: 100%;
+    align-self: flex-start;
+    background-color: var(--rendered-tab);
+    color: var(--primary-text-color);
+    padding: 3em 2em 2em 2em;
+    border-bottom: 2px solid var(--card-text-border);
+}
+.game-over-pre-header h2 {
+    font-size: 1.75rem;
+    font-weight: 100;
+}
+
+.game-over-header {
+    display: flex;
+    width: 100%;
+    background-color: var(--rendered-tab);
+    padding: 1.5em 2em;
+    align-items: center;
+}
+.profile-banner-header {
+    gap: 1em;
+    display: flex;
+    align-items: center;
+}
+.profile-banner-header img {
+    max-width: 3em;
+}
+.avatar-frame {
+    border: 2px solid var(--card-text-border);
+    border-radius: 50%;
+    padding: 0.6em;
+}
+.avatar-image {
+    filter: var(--factions);
+}
+
+.profile-name-date h2 {
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: var(--primary-text-color);
+}
+.profile-name-date p {
+    font-size: var(--font-four);
+    font-weight: 100;
+    color: var(--card-text-border);
+}
+.profile-name-date span {
+    font-size: var(--font-four);
+    font-weight: 100;
+    color: var(--primary-text-color);
+}
+
+/* GAME OVER STATS */
+.stats-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3em;
+}
+.stats-card {
+    border: 1px solid var(--card-text-border);
+    border-radius: 50%;
+    padding: 0.4em;
+}
+.stats-card-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    max-width: 10em;
+    height: 10em;
+    padding: 2em;
+    border: 2px solid var(--card-text-border);
+    border-radius: 50%;
+}
+.stats-card-circle h3 {
+    font-size: var(--font-three);
+    color: var(--card-text-border);
+    text-align: center;
+}
+.stats-card-circle span {
+    font-size: var(--font-one);
+    color: var(--primary-text-color);
+}
+
+.stats-card-dif {
+    display: flex;
+    gap: 1em;
+}
+.stats-card-dif span {
+    font-size: var(--font-three);
+}
+
+/* GAME OVER FOOTER */
+.game-over-footer {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    gap: 1.5em;
+    padding: 2em 3em;
+    background-color: var(--rendered-tab);
+}
+.game-over-play-again,
+.game-over-main-menu {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--card-text-border);
+    border: 2px solid var(--card-text-border);
+    border-radius: 0.4em;
+    padding: 0.5em 1em;
+    font-weight: 100;
+    font-size: var(--font-three);
+    transition: 0.4s ease-in-out;
+}
+
+.game-over-play-again:hover,
+.game-over-main-menu:hover {
+    color: var(--primary-text-color);
+    border: 2px solid var(--primary-text-color);
 }

@@ -126,7 +126,7 @@ export default function App() {
         if(totalGames === 0){
             return 0;
         };
-        return (correctGuesses / totalGames) * 100;
+        return Math.round(correctGuesses / totalGames);
     }
     
     function resetScore(){
@@ -135,21 +135,29 @@ export default function App() {
 
     function resetStats(){
         closeMenu();
-        setScore(0);
+        resetScore();
         setBestScore(0);
-        correctGuesses(0);
-        wrongGuesses(0);
+        setCorrectGuesses(0);
+        setWrongGuesses(0);
     }
 
     function resetStart(){
         setCurrentScreen('start');
-        setPlayerName('');
-        setScore(0);
+        resetScore();
         setPlayerDeck();
         setIsMenuVisible(false);
         setActiveTab('paused');
         setActiveOption('');
         setOptionPreview('');
+    }
+
+    function playAgain(){
+        resetScore();
+        setIsMenuVisible(false);
+        setActiveTab('paused');
+        setActiveOption('');
+        setOptionPreview('');
+        handleScreenSwitch('game');
     }
 
     function handleRestart(){
@@ -265,7 +273,7 @@ export default function App() {
     return (
         <>
             {currentScreen === 'start' && <StartScreen handleScreenSwitch={handleScreenSwitch} />}
-            {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} bestScore={bestScore} />}
+            {currentScreen === 'disclaimer' && <DisclaimerScreen handleScreenSwitch={handleScreenSwitch} playerName={playerName} />}
             {currentScreen === 'introduction' && <IntroductionScreen setPlayerName={setPlayerName} playerName={playerName} isLoading={isLoading} handleLoading={handleLoading} setCurrentScreen={setCurrentScreen} nameError={nameError} setNameError={setNameError} />}
             {currentScreen === 'faction' && <FactionScreen handleScreenSwitch={handleScreenSwitch} handleChosenDeck={handleChosenDeck} handleLoading={handleLoading} isLoading={isLoading} />}
             {currentScreen === 'game' && playerDeck && computerDeck && 
@@ -299,14 +307,14 @@ export default function App() {
                 soundEnabled={soundEnabled} 
                 musicEnabled={musicEnabled} 
                 handleToggleMusic={handleToggleMusic} 
-                handleRestart={handleRestart} 
+                handleRestart={handleRestart}
+                resetStats={resetStats} 
             />}
 
             {currentScreen === 'game-over' && 
             <GameOverScreen
                 playerName={playerName} 
                 playerDeck={playerDeck} 
-                handleRestart={handleRestart}
                 resetStart={resetStart}
                 totalGames={totalGames} 
                 accPercentage={accPercentage} 
@@ -314,6 +322,7 @@ export default function App() {
                 wrongGuesses={wrongGuesses}
                 bestScore={bestScore}
                 avgScore={avgScore}
+                playAgain={playAgain}
             />}
         </>
     );
