@@ -1005,45 +1005,61 @@ button.selected-tab {
 }
 
 /* GAME OVER STATS */
+.game-stats-screen {
+    display: flex;
+    margin-top: 2em;
+    width: 100%;
+    padding: 0 3em;
+    gap: 5em;
+}
+.game-stats-container {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 2em;
+}
 .stats-cards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 3em;
 }
-.stats-card {
-    border: 1px solid var(--card-text-border);
-    border-radius: 50%;
-    padding: 0.4em;
+.game-achievements-container p {
+    font-size: var(--font-four);
+    color: var(--primary-text-color);
+    margin-top: 0.5em;
 }
-.stats-card-circle {
+.stats-cards-title {
+    color: var(--primary-text-color);
+    border-bottom: 2px solid var(--card-text-border);
+}
+.stats-cards-title h3 {
+    font-size: var(--font-two);
+    font-weight: 100;
+    margin-bottom: 0.5em;
+}
+.stats-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 1em;
-    max-width: 10em;
-    height: 10em;
-    padding: 2em;
-    border: 2px solid var(--card-text-border);
-    border-radius: 50%;
-}
-.stats-card-circle h3 {
-    font-size: var(--font-three);
-    color: var(--card-text-border);
-    text-align: center;
-}
-.stats-card-circle span {
-    font-size: var(--font-one);
+    border: 1px solid var(--card-text-border);
+    border-radius: 0.5em;
     color: var(--primary-text-color);
 }
-
-.stats-card-dif {
-    display: flex;
-    gap: 1em;
+.stats-card-header {
+    width: 100%;
+    text-align: center;
+    border: 1px solid var(--card-text-border);
+    border-radius: 0.5em 0.5em 0 0;
+    padding: 0.7em;
 }
-.stats-card-dif span {
-    font-size: var(--font-three);
+.stats-card h3 {
+    font-size: var(--font-four);
+    font-weight: 100;
+}
+.stats-card span {
+    font-size: var(--font-one);
+    padding: 1em;
 }
 
 /* GAME OVER FOOTER */
