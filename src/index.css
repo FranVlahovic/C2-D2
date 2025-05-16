@@ -642,6 +642,8 @@ form span {
     font-weight: 100;
     color: var(--primary-text-color);
     max-width: 8em;
+    justify-items: center;
+    justify-items: center;
 }
 .card-image-pwr {
     display: flex;
@@ -1153,4 +1155,132 @@ button.selected-tab {
 .game-over-main-menu:hover {
     color: var(--primary-text-color);
     border: 2px solid var(--primary-text-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1920px) {
+    .game-screen {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1440px) {
+    .faction-select-heading span {
+        text-align: center;
+    }
+
+    .card-container,
+    .hidden-card {
+        scale: 0.7;
+    }
+
+    .game-main .cardback {
+        left: 2em;
+        scale: 0.6;
+    }
+
+    .game-screen {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+    .game-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0em;
+        padding: 1em;
+        overflow: hidden;
+    }
+
+    .scoreboard-score {
+        align-self: center;
+    }
+
+    .game-footer .profile-banner {
+        align-self: center;
+    }
+
+    .game-stats-container,
+    .game-achievements-container {
+        scale: 0.9;
+    }
+    .stats-cards-container {
+        gap: 2em;
+    }
+    .game-over-pre-header {
+        padding: 2em 1em 1em 2em;
+    }
+    .game-over-header {
+        padding: 1em 2em;
+    }
+    .game-stats-screen {
+        margin-top: 0;
+    }
+    .game-over-footer {
+        padding: 0.8em 3em;
+    }
+    .game-over-play-again,
+    .game-over-main-menu {
+        scale: 0.9;
+    }
+    .profile-banner-header {
+        scale: 0.9;
+    }
+}
+
+@media (max-width: 1024px) {
+    .faction-select-heading {
+        scale: 0.9;
+        text-align: center;
+        max-width: 60%;
+    }
+    .faction-card {
+        scale: 0.8;
+    }
+    .faction-select-container {
+        gap: 1em;
+    }
+    .rendered-tab-credits,
+    .rendered-tab-copyright {
+        scale: 0.9;
+    }
+    .game-menu-buttons {
+        width: 30%;
+    }
+    .game-menu-main {
+        justify-content: space-between;
+    }
+    .game-stats-container,
+    .game-achievements-container {
+        scale: 0.8;
+    }
+    .game-stats-screen {
+        justify-content: center;
+    }
+    .achievements-container {
+        width: 35em;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .startscreen-heading h1 {
+        font-size: 3rem;
+    }
+    .startscreen-heading {
+        text-align: center;
+        max-width: 70%;
+    }
+}
+@media (max-width: 425px) {
+    .startscreen-heading h1 {
+        font-size: var(--font-one);
+    }
+    .startscreen-heading p {
+        font-size: var(--font-three);
+    }
 }

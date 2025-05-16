@@ -336,6 +336,7 @@ export default function App() {
                 avgScore={avgScore}
                 playAgain={playAgain}
             />}
+            
         </>
     );
 }
