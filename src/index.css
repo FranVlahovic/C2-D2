@@ -1160,7 +1160,7 @@ button.selected-tab {
 /* RESPONSIVE */
 @media (max-width: 1920px) {
     .game-screen {
-        height: 100%;
+        height: 100dvh;
         overflow: hidden;
     }
 }
