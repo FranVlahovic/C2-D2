@@ -1,3 +1,4 @@
+import GameOverStatsCard from "../../../components/GameStats";
 import OptionPreview from "./OptionPreview";
 import AudioTab from "./Tabs/AudioTab";
 import ControlsTab from "./Tabs/ControlsTab";
@@ -15,12 +16,18 @@ export default function RenderedMenu({
     handleToggleSound,
     soundEnabled,
     handleToggleMusic, 
-    musicEnabled
+    musicEnabled,
+    totalGames, 
+    accPercentage, 
+    correctGuesses, 
+    wrongGuesses, 
+    bestScore, 
+    avgScore
 }) {
     const options = [
         { name: 'resume', description: 'Continue your current game' },
         { name: 'restart', description: 'Start a new game from the beginning' },
-        { name: 'reset stats', description: 'Clear all game Stats & Scores' },
+        { name: 'reset stats', description: 'Reset Everything' },
         { name: 'concede', description: 'Surrender the match' },
         { name: 'stats', description: 'View your gameplay stats' },
         { name: 'quit', description: 'Exit to the Main Menu' },
@@ -42,6 +49,17 @@ export default function RenderedMenu({
                             description={option.description}
                         />
                     )
+            )}
+
+            {!optionPreview && activeOption === 'stats' && (
+                <GameOverStatsCard 
+                    totalGames={totalGames}
+                    accPercentage={accPercentage}
+                    correctGuesses={correctGuesses}
+                    wrongGuesses={wrongGuesses}
+                    bestScore={bestScore}
+                    avgScore={avgScore}
+                />
             )}
 
             {!optionPreview && activeOption === 'profile' && (

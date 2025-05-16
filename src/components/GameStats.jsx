@@ -1,5 +1,11 @@
-export default function GameOverStatsCard({ totalGames, accPercentage, correctGuesses, wrongGuesses, bestScore, avgScore }){
+import { achievementRules } from '../data/achievements';
 
+import CorrectAchievementImage from '../assets/icons/correct-ach.svg';
+import WrongAchievementImage from '../assets/icons/wrong-ach.svg';
+import BestAchievementImage from '../assets/icons/best-ach.svg';
+import GamesAchievementImage from '../assets/icons/games-ach.svg';
+
+export default function GameOverStatsCard({ totalGames, accPercentage, correctGuesses, wrongGuesses, bestScore, avgScore }){
     const stats = [
         { title: 'correct', value: correctGuesses },
         { title: 'wrong', value: wrongGuesses },
@@ -10,39 +16,35 @@ export default function GameOverStatsCard({ totalGames, accPercentage, correctGu
         { title: 'total games', value: totalGames },
     ]
     
-    const achievements = [
-        { title: 'Welcome Abroad!', description: 'Started playing C2-D2' },
-    ]
 
-    const achievementRules = [
-        {
-            title: 'Baby Droid',
-            condition: correctGuesses >= 10,
-        },
-        {
-            title: 'Rising Droid',
-            condition: correctGuesses >= 30,
-        },
-        {
-            title: 'Oops Master',
-            condition: wrongGuesses >= 10,
-        },
-        {
-            title: 'Veteran Player',
-            condition: totalGames >= 20,
-        },
-        {
-            title: 'High Scorer',
-            condition: bestScore >= 50,
-        },
-    ];
-      
-    achievementRules.forEach((ach)=>
-    {
-        if(ach.condition){
-            achievements.push({ title: ach.title })
+    const achievements = []
+
+    function getAchievementIcon(type){
+        const icons = {
+            correct: CorrectAchievementImage,
+            wrong: WrongAchievementImage,
+            best: BestAchievementImage,
+            games: GamesAchievementImage,
+        };
+        return icons[type];
+    }
+
+    achievementRules.forEach(({ title, type, rank, description, correctNumber, wrongNumber, bestNumber, gamesNumber }) => {
+        if (
+            (correctNumber && correctGuesses >= correctNumber) ||
+          (wrongNumber && wrongGuesses >= wrongNumber) || 
+          (bestNumber && bestScore >= bestNumber) ||
+          (gamesNumber && totalGames >= gamesNumber)
+        ) {
+            achievements.push({
+                title,
+                description,
+                type,
+                rank,
+                image: getAchievementIcon(type),
+            });
         }
-    })
+    });
 
     return (
         <div className="game-stats-screen">
@@ -58,7 +60,7 @@ export default function GameOverStatsCard({ totalGames, accPercentage, correctGu
                                 <h3>{card.title.toUpperCase()}</h3>
                             </div>
                             <span>{card.value}</span>
-                        </div>  
+                        </div>
                     ))}
                 </div>
             </div>
@@ -69,8 +71,11 @@ export default function GameOverStatsCard({ totalGames, accPercentage, correctGu
                 <div className="achievements-container">
                     {achievements.map((ach) => (
                         <div className="achievement-card" key={ach.index}>
-                            <h3>{ach.title}</h3>
-                            <p>{ach.description}</p>
+                            <img src={ach.image} alt={`${ach.type} achievement icon`} className={`achievement-icon ${ach.rank}`} />
+                            <div className="achievement-card-info">
+                                <h3>{ach.title}</h3>
+                                <p>{ach.description}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

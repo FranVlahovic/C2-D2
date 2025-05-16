@@ -22,7 +22,13 @@ export default function GameMenu({
     handleToggleMusic, 
     musicEnabled,
     handleRestart,
-    resetStats
+    resetStats,
+    totalGames, 
+    accPercentage, 
+    correctGuesses, 
+    wrongGuesses, 
+    bestScore, 
+    avgScore
 }){
 
 
@@ -35,7 +41,24 @@ export default function GameMenu({
                     {activeTab === 'settings' && <SettingsMenu handleActiveOption={handleActiveOption} handleOptionPreview={handleOptionPreview} activeOption={activeOption} />}
                 </div>
                 <div className="game-menu-buttons-rendered">
-                    <RenderedMenu activeOption={activeOption} optionPreview={optionPreview} playerName={playerName} setPlayerName={setPlayerName} playerDeck={playerDeck} handleChosenDeck={handleChosenDeck} handleToggleSound={handleToggleSound} soundEnabled={soundEnabled} handleToggleMusic={handleToggleMusic} musicEnabled={musicEnabled} />
+                    <RenderedMenu 
+                        activeOption={activeOption} 
+                        optionPreview={optionPreview} 
+                        playerName={playerName} 
+                        setPlayerName={setPlayerName} 
+                        playerDeck={playerDeck} 
+                        handleChosenDeck={handleChosenDeck} 
+                        handleToggleSound={handleToggleSound} 
+                        soundEnabled={soundEnabled} 
+                        handleToggleMusic={handleToggleMusic} 
+                        musicEnabled={musicEnabled} 
+                        totalGames={totalGames} 
+                        accPercentage={accPercentage}
+                        correctGuesses={correctGuesses}
+                        wrongGuesses={wrongGuesses}
+                        bestScore={bestScore}
+                        avgScore={avgScore} 
+                    />
                 </div>
             </div>
 

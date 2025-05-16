@@ -21,7 +21,7 @@ export default function GameOverScreen({
                 <h2>END OF MATCH</h2>
             </div>
 
-            <GameOverHeader name={playerName}  faction={playerDeck} />
+            <GameOverHeader name={playerName}  faction={playerDeck} correctGuesses={correctGuesses} />
             
             <GameStats 
                 totalGames={totalGames} 

@@ -25,6 +25,15 @@
     --font-three: 1rem;
     --font-four: 0.9rem;
     --font-five: 0.8rem;
+
+    --bronze-color: brightness(0) saturate(100%) invert(68%) sepia(54%)
+        saturate(1468%) hue-rotate(335deg) brightness(84%) contrast(88%);
+    --silver-color: brightness(0) saturate(100%) invert(98%) sepia(0%)
+        saturate(14%) hue-rotate(153deg) brightness(81%) contrast(86%);
+    --gold-color: brightness(0) saturate(100%) invert(86%) sepia(51%)
+        saturate(3361%) hue-rotate(337deg) brightness(87%) contrast(97%);
+    --diamond-color: brightness(0) saturate(100%) invert(87%) sepia(26%)
+        saturate(744%) hue-rotate(170deg) brightness(103%) contrast(105%);
 }
 
 img {
@@ -980,12 +989,27 @@ button.selected-tab {
     max-width: 3em;
 }
 .avatar-frame {
-    border: 2px solid var(--card-text-border);
     border-radius: 50%;
     padding: 0.6em;
 }
 .avatar-image {
     filter: var(--factions);
+}
+
+.bronzeBorder {
+    border: 3px solid #cd7f32;
+}
+
+.silverBorder {
+    border: 3px solid #c0c0c0;
+}
+
+.goldBorder {
+    border: 3px solid #ffd700;
+}
+
+.diamondBorder {
+    border: 3px solid #b9f2ff;
 }
 
 .profile-name-date h2 {
@@ -1024,11 +1048,7 @@ button.selected-tab {
     grid-template-columns: repeat(3, 1fr);
     gap: 3em;
 }
-.game-achievements-container p {
-    font-size: var(--font-four);
-    color: var(--primary-text-color);
-    margin-top: 0.5em;
-}
+
 .stats-cards-title {
     color: var(--primary-text-color);
     border-bottom: 2px solid var(--card-text-border);
@@ -1060,6 +1080,50 @@ button.selected-tab {
 .stats-card span {
     font-size: var(--font-one);
     padding: 1em;
+}
+/* GAME STATS ACHIEVEMENTS */
+.game-achievements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.achievements-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5em;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--card-text-border);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    gap: 0.5em;
+}
+.achievement-icon {
+    max-width: 2.5em;
+}
+
+.achievement-card p {
+    font-size: var(--font-four);
+    color: var(--card-text-border);
+}
+.achievement-card h3 {
+    font-size: var(--font-three);
+    color: var(--primary-text-color);
+}
+.bronze {
+    filter: var(--bronze-color);
+}
+.silver {
+    filter: var(--silver-color);
+}
+.gold {
+    filter: var(--gold-color);
+}
+.diamond {
+    filter: var(--diamond-color);
 }
 
 /* GAME OVER FOOTER */

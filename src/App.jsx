@@ -26,7 +26,10 @@ export default function App() {
     const [currentScreen, setCurrentScreen] = useState('start');
     const [isLoading, setIsLoading] = useState(false);
 
-    const [playerName, setPlayerName] = useState('');
+    const [playerName, setPlayerName] = useState(() => {
+        return localStorage.getItem('playerName') || '';
+          
+    });
     const [nameError, setNameError] = useState('');
 
     const [fullCards, setFullCards] = useState([]);
@@ -139,6 +142,7 @@ export default function App() {
         setBestScore(0);
         setCorrectGuesses(0);
         setWrongGuesses(0);
+        playerName('');
     }
 
     function resetStart(){
@@ -226,7 +230,6 @@ export default function App() {
             soundEnabled && playCard();
             musicEnabled ? playBackground() : stop();
             
-            
             setComputerDeck(randomItem(factions));
             setComputerCard(randomItem(fullCards));
             setPlayerCard(randomItem(fullCards));
@@ -252,6 +255,10 @@ export default function App() {
     useEffect(() => {
         localStorage.setItem('wrongGuesses', wrongGuesses);
     }, [wrongGuesses]);
+    // GET PLAYER NAME FROM LOCAL STORAGE
+    useEffect(() => {
+        localStorage.setItem('playerName', playerName);
+    }, [playerName]);
 
     //ESCAPE KEY LOGIC
     useEffect(() => {
@@ -308,7 +315,12 @@ export default function App() {
                 musicEnabled={musicEnabled} 
                 handleToggleMusic={handleToggleMusic} 
                 handleRestart={handleRestart}
-                resetStats={resetStats} 
+                resetStats={resetStats}
+                totalGames={totalGames} 
+                accPercentage={accPercentage} 
+                correctGuesses={correctGuesses} 
+                wrongGuesses={wrongGuesses} 
+                avgScore={avgScore}
             />}
 
             {currentScreen === 'game-over' && 
