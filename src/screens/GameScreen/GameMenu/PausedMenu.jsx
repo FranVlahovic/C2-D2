@@ -4,7 +4,7 @@ export default function PausedMenu({ closeMenu, handleScreenSwitch, handleRestar
     const buttons = [
         { name: 'resume', action: closeMenu },
         { name: 'restart', action: handleRestart },
-        { name: 'reset stats', action: resetStats },
+        { name: 'reset all', action: resetStats },
         { name: 'concede', action: () => handleScreenSwitch('game-over') },
         { name: 'quit', action: resetStart }
     ]

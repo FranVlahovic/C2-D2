@@ -27,7 +27,7 @@ export default function RenderedMenu({
     const options = [
         { name: 'resume', description: 'Continue your current game' },
         { name: 'restart', description: 'Start a new game from the beginning' },
-        { name: 'reset stats', description: 'Reset Everything' },
+        { name: 'reset all', description: 'Reset Everything' },
         { name: 'concede', description: 'Surrender the match' },
         { name: 'stats', description: 'View your gameplay stats' },
         { name: 'quit', description: 'Exit to the Main Menu' },
