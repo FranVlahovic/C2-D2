@@ -56,8 +56,6 @@
 Built with modern web technologies like **React** and **Vite**, it offers a fast and scalable experience.
 The game is designed for quick, casual play and easy expansion
 
-Here’s a cleaner, more polished version of your **Features** section, with improved grammar, consistency, and formatting while keeping your structure intact:
-
 ---
 
 ## Features
