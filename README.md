@@ -319,16 +319,16 @@ Project Link: [https://github.com/FranVlahovic/C2-D2](https://github.com/FranVla
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/FranVlahovic/Aeris.svg?style=for-the-badge
-[contributors-url]: https://github.com/FranVlahovic/Aeris/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/FranVlahovic/Aeris.svg?style=for-the-badge
-[forks-url]: https://github.com/FranVlahovic/Aeris/network/members
-[stars-shield]: https://img.shields.io/github/stars/FranVlahovic/Aeris.svg?style=for-the-badge
-[stars-url]: https://github.com/FranVlahovic/Aeris/stargazers
-[issues-shield]: https://img.shields.io/github/issues/FranVlahovic/Aeris.svg?style=for-the-badge
-[issues-url]: https://github.com/FranVlahovic/Aeris/issues
-[license-shield]: https://img.shields.io/github/license/FranVlahovic/Aeris.svg?style=for-the-badge
-[license-url]: https://github.com/FranVlahovic/Aeris/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/FranVlahovic/C2-D2.svg?style=for-the-badge
+[contributors-url]: https://github.com/FranVlahovic/C2-D2/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/FranVlahovic/C2-D2.svg?style=for-the-badge
+[forks-url]: https://github.com/FranVlahovic/C2-D2/network/members
+[stars-shield]: https://img.shields.io/github/stars/FranVlahovic/C2-D2.svg?style=for-the-badge
+[stars-url]: https://github.com/FranVlahovic/C2-D2/stargazers
+[issues-shield]: https://img.shields.io/github/issues/FranVlahovic/C2-D2.svg?style=for-the-badge
+[issues-url]: https://github.com/FranVlahovic/C2-D2/issues
+[license-shield]: https://img.shields.io/github/license/FranVlahovic/C2-D2.svg?style=for-the-badge
+[license-url]: https://github.com/FranVlahovic/C2-D2/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-blue.svg?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://linkedin.com/in/franvlahovic
 
