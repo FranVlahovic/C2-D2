@@ -37,6 +37,7 @@
 
 - [About The Project](#about-the-project)
 - [Features](#features)
+- [How to play](#how-to-play)
 - [Gallery](#gallery)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
@@ -125,6 +126,14 @@ Players earn ranks based on the number of correct guesses:
 | 50 to 99     | Silver  |
 | 100 to 199   | Gold    |
 | 200 or more  | Diamond |
+
+## How to Play
+
+1. Click **High** or **Low** depending on whether you think your card is **higher or lower** than your opponent’s.
+2. The opponent's card will be revealed after your guess.
+3. ✅ If you guessed correctly, you **score a point** and continue playing.
+4. ❌ If your guess is wrong, it's **Game Over**.
+5. Aim to **build the highest streak** of correct guesses!
 
 ## Gallery
 
